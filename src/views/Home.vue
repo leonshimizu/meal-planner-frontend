@@ -39,7 +39,6 @@
             <p>{{ recipe.instructions }}</p>
           </li>
         </ul>
-
         <button>Close</button>
       </form>
     </dialog>
@@ -101,7 +100,6 @@ export default {
       console.log("in the show info function");
       console.log(theMealPlan.meals[0].title);
       document.querySelector("#show-modal").showModal();
-      // this.currentMealPlan = theMealPlan.meals;
       this.currentMealPlan = theMealPlan;
     },
     showRecipeInfo: function(theMealPlan) {
@@ -119,119 +117,3 @@ export default {
   }
 }
 </script>
-
-        <!-- <p>{{ currentMealPlan.meals[0].id }}</p> -->
-        <!-- <ul>
-          <li v-for="meal in currentMealPlan.meals">
-            <p>{{ meal.title }}, {{ meal.readyInMinutes }} minutes to prepare, {{ meal.servings }} servings, and more info at {{ meal.sourceUrl }}</p>
-          </li>
-        </ul> -->
-        <!-- <p>Total Calories: {{ currentMealPlan.nutrients["calories"] }}</p> -->
-        <!-- <p>Total Calories: {{ currentMealPlan.nutrients.calories }}</p>
-        <p>Total Protien: {{ currentMealPlan.nutrients.protein }}</p>
-        <p>Total Fat: {{ currentMealPlan.nutrients.fat }}</p>
-        <p>Total Carbohydrates: {{ currentMealPlan.nutrients.carbohydrates }}</p> -->
-        <!-- <p>{{ currentMealPlan.nutrients }}</p> -->
-
-            <!-- <button v-on:click="showInfo(key)">Show More Info</button> -->
-
-    <!-- <ul>
-      <li>
-        <b>Monday:</b> 
-        <ul>
-          <li>
-            Breakfast: {{ days.week.monday.meals[0].title }}
-          </li>
-          <li>
-            Lunch: {{ days.week.monday.meals[1].title }}
-          </li>
-          <li>
-            Dinner: {{ days.week.monday.meals[2].title }}
-          </li>
-        </ul>
-      </li>
-      <li>
-        <b>Tuesday:</b> 
-        <ul>
-          <li>
-            Breakfast: {{ days.week.tuesday.meals[0].title }}
-          </li>
-          <li>
-            Lunch: {{ days.week.tuesday.meals[1].title }}
-          </li>
-          <li>
-            Dinner: {{ days.week.tuesday.meals[2].title }}
-          </li>
-        </ul>
-      </li>
-            <li>
-        <b>Wednesday:</b> 
-        <ul>
-          <li>
-            Breakfast: {{ days.week.wednesday.meals[0].title }}
-          </li>
-          <li>
-            Lunch: {{ days.week.wednesday.meals[1].title }}
-          </li>
-          <li>
-            Dinner: {{ days.week.wednesday.meals[2].title }}
-          </li>
-        </ul>
-      </li>
-            <li>
-        <b>Thursday:</b> 
-        <ul>
-          <li>
-            Breakfast: {{ days.week.thursday.meals[0].title }}
-          </li>
-          <li>
-            Lunch: {{ days.week.thursday.meals[1].title }}
-          </li>
-          <li>
-            Dinner: {{ days.week.thursday.meals[2].title }}
-          </li>
-        </ul>
-      </li>
-      <li>
-        <b>Friday:</b> 
-        <ul>
-          <li>
-            Breakfast: {{ days.week.friday.meals[0].title }}
-          </li>
-          <li>
-            Lunch: {{ days.week.friday.meals[1].title }}
-          </li>
-          <li>
-            Dinner: {{ days.week.friday.meals[2].title }}
-          </li>
-        </ul>
-      </li>
-      <li>
-        <b>Saturday:</b> 
-        <ul>
-          <li>
-            Breakfast: {{ days.week.saturday.meals[0].title }}
-          </li>
-          <li>
-            Lunch: {{ days.week.saturday.meals[1].title }}
-          </li>
-          <li>
-            Dinner: {{ days.week.saturday.meals[2].title }}
-          </li>
-        </ul>
-      </li>
-      <li>
-        <b>Sunday:</b> 
-        <ul>
-          <li>
-            Breakfast: {{ days.week.sunday.meals[0].title }}
-          </li>
-          <li>
-            Lunch: {{ days.week.sunday.meals[1].title }}
-          </li>
-          <li>
-            Dinner: {{ days.week.sunday.meals[2].title }}
-          </li>
-        </ul>
-      </li>
-    </ul> -->
