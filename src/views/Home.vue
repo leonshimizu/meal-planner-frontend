@@ -59,9 +59,9 @@ export default {
       apiKey2: process.env.VUE_APP_SPOONACULAR_API_KEY_TWO,
       welcomeMessage: "Welcome to the Meal Plan Generator!",
       days: [],
-      diet: "Vegetarian",
-      calories: "2500",
-      allergies: "Dairy",
+      diet: "Gluten Free",
+      calories: "1200",
+      allergies: "Peanut",
       currentMealPlan: {},
       recipeInfo: {
         preparationMinutes: [],
@@ -98,7 +98,6 @@ export default {
     },
     showInfo: function(theMealPlan) {
       console.log("in the show info function");
-      console.log(theMealPlan.meals[0].title);
       document.querySelector("#show-modal").showModal();
       this.currentMealPlan = theMealPlan;
     },
@@ -106,7 +105,6 @@ export default {
       console.log("in the recipe info function");
       document.querySelector("#show-modal").showModal();
       this.currentMealPlan = theMealPlan;
-      console.log(this.currentMealPlan.meals[0].id);
       axios
         .get(`https://api.spoonacular.com/recipes/informationBulk?ids=${this.currentMealPlan.meals[0].id},${this.currentMealPlan.meals[1].id},${this.currentMealPlan.meals[2].id}&apiKey=${this.apiKey2}&includeNutrition=true`)
         .then(response => {
