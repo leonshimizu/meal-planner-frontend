@@ -3,7 +3,7 @@
     <div id="nav">
       <router-link to="/">Meal Plans</router-link> |
       <router-link to="/recipes">Recipes</router-link> |
-      <router-link to="/mealPlan">Personal Meal Plans</router-link>
+      <router-link to="/meal_plans">Personal Meal Plans</router-link>
     </div>
     <router-view/>
   </div>
