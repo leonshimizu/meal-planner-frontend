@@ -9,6 +9,9 @@
     <input type="text" v-model="allergies">
     <br>
     <button v-on:click="createMealPlan()">Submit Meal Plan</button>
+    <br>
+    <br>
+    <button v-on:click="saveMealPlan()">Save Meal Plan</button>
     <hr>
     <ul>
       <li v-for="(key, value) in days.week">
@@ -87,8 +90,6 @@ export default {
   methods: {
     createMealPlan: function() {
       console.log("in the index/create meal plan function");
-      // console.log(this.apiKey1);
-      // console.log(this.apiKey2);
       axios
         .get(`https://api.spoonacular.com/mealplanner/generate?timeFrame=week&apiKey=${this.apiKey1}&targetCalories=${this.calories}&diet=${this.diet}&exlude=${this.allergies}`)
         .then(response => {
@@ -111,6 +112,23 @@ export default {
           console.log(response.data);
           this.recipeInfo = response.data;
         })
+    },
+    saveMealPlan: function() {
+      console.log("in the process of saving the meal plan");
+      axios 
+        .post(`http://localhost:3000/meal_plans`, {
+          diet: this.diet,
+          allergies: this.allergies, 
+          timeFrame: "week",
+          calories: this.calories
+        })
+        .then(response => {
+          console.log(response.data);
+        })
+      // axios
+      //   .post(`http://localhost:3000/meals`, {
+
+      //   })
     }
   }
 }
