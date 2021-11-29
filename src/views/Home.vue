@@ -8,7 +8,7 @@
     <input type="text" v-model="calories">
     <input type="text" v-model="allergies">
     <br>
-    <button v-on:click="createMealPlan()">Submit Meal Plan</button>
+    <button v-on:click="createMealPlan()">Generate Meal Plan</button>
     <br>
     <br>
     <button v-on:click="saveMealPlan()">Save Meal Plan</button>
@@ -82,7 +82,8 @@ export default {
         analyzedInstructions: {},
         spoonacularSourceUrl: []
       },
-      mealPlan: {}
+      mealPlan: {},
+      // id: undefined
     }
   },
   created: function() {
@@ -126,8 +127,37 @@ export default {
         .then(response => {
           console.log(response.data);
           this.mealPlan = response.data;
+          // this.id = response.data.id
         })
-      console.log(this.recipeInfo); // creating loop to save all meals into db
+      var meal = Object.entries(this.days.week);
+      // console.log(meal[0][1].meals[0].id); // recipe id
+      // console.log(meal[1][0]); // day of week
+      // console.log(meal[0][1].meals[0]); // potentially meal type
+      for (var i = 0; i < Object.entries(this.days.week).length; i++) {
+        for (var j = 0; j < 3; j++) {
+          var mealType = ""
+          if (mealType === meal[0][1].meals[0]) {
+            mealType = "breakfast"
+          } else if (mealType === meal[0][1].meals[1]) {
+            mealType = "lunch"
+          } else if (mealType === meal[0][1].meals[2]) {
+            mealType = "dinner"
+          }
+
+          axios 
+            .post(`http://localhost:3000/meals`, {
+              meal_plan_id: 16, // still need to make dynamic
+              user_id: 1, // still need to make dynamic
+              day_of_week: meal[i][0],
+              meal_type: mealType, // need to fix - in rails c it says ""
+              recipe_id: meal[i][1].meals[j].id
+            })
+            .then(response => {
+              console.log(response.data);
+            })
+          }
+        }
+      // console.log(this.recipeInfo); // creating loop to save all meals into db
       // for (var i = 0; i < this.mealPlan.length; i ++) {
       //   axios 
       //     .post(`http://localhost:3000/meals`, {

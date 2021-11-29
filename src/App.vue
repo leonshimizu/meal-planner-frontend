@@ -2,8 +2,8 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Meal Plans</router-link> |
-      <router-link to="/recipes">Recipes</router-link> |
-      <router-link to="/meal_plans">Personal Meal Plans</router-link>
+      <router-link to="/meal_plans">Personal Meal Plans</router-link> |
+      <router-link to="/recipes">Recipes</router-link>
     </div>
     <router-view/>
   </div>
