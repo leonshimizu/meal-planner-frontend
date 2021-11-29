@@ -81,7 +81,8 @@ export default {
         instructions: [],
         analyzedInstructions: {},
         spoonacularSourceUrl: []
-      }
+      },
+      mealPlan: {}
     }
   },
   created: function() {
@@ -124,11 +125,15 @@ export default {
         })
         .then(response => {
           console.log(response.data);
+          this.mealPlan = response.data;
         })
-      // axios
-      //   .post(`http://localhost:3000/meals`, {
-
-      //   })
+      console.log(this.recipeInfo); // creating loop to save all meals into db
+      // for (var i = 0; i < this.mealPlan.length; i ++) {
+      //   axios 
+      //     .post(`http://localhost:3000/meals`, {
+      //       meal_plan_id: this.mealPlan.id
+      //     })
+      // }
     }
   }
 }
