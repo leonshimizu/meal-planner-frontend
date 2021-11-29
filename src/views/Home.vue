@@ -157,13 +157,6 @@ export default {
             })
           }
         }
-      // console.log(this.recipeInfo); // creating loop to save all meals into db
-      // for (var i = 0; i < this.mealPlan.length; i ++) {
-      //   axios 
-      //     .post(`http://localhost:3000/meals`, {
-      //       meal_plan_id: this.mealPlan.id
-      //     })
-      // }
     }
   }
 }
