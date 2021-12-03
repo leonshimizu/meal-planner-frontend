@@ -60,6 +60,7 @@ export default {
     return {
       apiKey1: process.env.VUE_APP_SPOONACULAR_API_KEY_ONE,
       apiKey2: process.env.VUE_APP_SPOONACULAR_API_KEY_TWO,
+      apiKey3: process.env.VUE_APP_SPOONACULAR_API_KEY_THREE,
       welcomeMessage: "Welcome to the Meal Plan Generator!",
       days: [],
       diet: "Gluten Free",

@@ -7,8 +7,9 @@
     <p>Calories: {{ meal_plan[0].calories }}</p>
     <p>Created: {{ meal_plan[0].created_at }}</p>
     <ul>
-      <li v-for="meal in meals">
-        <p>Day: {{ meal.day_of_week }}</p> 
+      <li v-for="meal in allMeals">
+        <p v-for="day in meals">{{ day.day_of_week }}</p> <!-- fix format -->
+        <p>{{ meal }}</p> 
       </li>
     </ul>
   </div>
@@ -24,6 +25,8 @@
         message: "Your Meal Plan!",
         meal_plan: {},
         meals: {},
+        apiKey1: process.env.VUE_APP_SPOONACULAR_API_KEY_ONE,
+        apiKey2: process.env.VUE_APP_SPOONACULAR_API_KEY_TWO,
         apiKey3: process.env.VUE_APP_SPOONACULAR_API_KEY_THREE,
         allMeals: []
       };
@@ -59,9 +62,11 @@
             var id = recipes[i].recipe_id;
             // console.log(id);
             axios 
-              .get(`https://api.spoonacular.com/recipes/informationBulk?ids=${id}&apiKey=${this.apiKey3}&includeNutrition=true`)
+              .get(`https://api.spoonacular.com/recipes/informationBulk?ids=${id}&apiKey=${this.apiKey2}&includeNutrition=true`)
               .then(response => {
-                console.log(response.data);
+                console.log(response.data[0]);
+                this.allMeals.push(response.data);
+                // console.log(this.allMeals);
               })
           }
         }, 2000)
