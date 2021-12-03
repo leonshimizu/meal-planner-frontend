@@ -58,7 +58,7 @@ export default {
   components: {},
   data: function() {
     return {
-      apiKey1: (process.env.VUE_APP_SPOONACULAR_API_KEY_ONE),
+      apiKey1: process.env.VUE_APP_SPOONACULAR_API_KEY_ONE,
       apiKey2: process.env.VUE_APP_SPOONACULAR_API_KEY_TWO,
       welcomeMessage: "Welcome to the Meal Plan Generator!",
       days: [],
