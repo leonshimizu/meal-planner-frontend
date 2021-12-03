@@ -136,20 +136,22 @@ export default {
       for (var i = 0; i < Object.entries(this.days.week).length; i++) {
         for (var j = 0; j < 3; j++) {
           var mealType = ""
-          if (mealType === meal[0][1].meals[0]) {
-            mealType = "breakfast"
-          } else if (mealType === meal[0][1].meals[1]) {
-            mealType = "lunch"
-          } else if (mealType === meal[0][1].meals[2]) {
+          if (j === 0) {
+            mealType = "breakfast";
+          } else if (j === 1) {
+            mealType = "lunch";
+          } else if (j === 2) {
             mealType = "dinner"
+          } else {
+            mealType = "failed"
           }
 
           axios 
             .post(`http://localhost:3000/meals`, {
               meal_plan_id: 16, // still need to make dynamic
-              user_id: 1, // still need to make dynamic
-              day_of_week: meal[i][0],
-              meal_type: mealType, // need to fix - in rails c it says ""
+              user_id: 4, // still need to make dynamic
+              day_of_week: meal[i][0], // need to fix - showing wrong day
+              meal_type: mealType,
               recipe_id: meal[i][1].meals[j].id
             })
             .then(response => {
