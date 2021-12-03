@@ -148,9 +148,9 @@ export default {
 
           axios 
             .post(`http://localhost:3000/meals`, {
-              meal_plan_id: 16, // still need to make dynamic
-              user_id: 4, // still need to make dynamic
-              day_of_week: meal[i][0], // need to fix - showing wrong day
+              meal_plan_id: 16, // still need to make dynamic - this.mealPlan.id isn't working yet - potentially going to try the timeout method because it might need to be delayed
+              user_id: 1, // still need to make dynamic 
+              day_of_week: meal[i][0], // should work correct - still need to double check
               meal_type: mealType,
               recipe_id: meal[i][1].meals[j].id
             })
