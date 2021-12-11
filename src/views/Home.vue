@@ -10,20 +10,15 @@
     <br>
     <button v-on:click="createMealPlan()">Generate Meal Plan</button>
     <br>
-    <br>
     <button v-on:click="saveMealPlan()">Save Meal Plan</button>
-    <hr>
+    <br>
     <ul>
-      <li v-for="(key, value) in days.week">
-        <ul><b>{{ value.charAt(0).toUpperCase() + value.slice(1) }}</b>
-          <li>
-            <p>Breakfast: {{ key.meals[0].title }}</p>
-            <p>Lunch: {{ key.meals[1].title }}</p>
-            <p>Dinner: {{ key.meals[2].title }}</p>
-            <button v-on:click="showRecipeInfo(key)">Show More Info</button>
-            <hr>
-          </li>
-        </ul>
+      <li v-for="day in days">
+        <p>Breakfast: {{ day.meals[0].title }}</p>
+        <p>Lunch: {{ day.meals[1].title }}</p>
+        <p>Dinner: {{ day.meals[2].title }}</p>
+        <button v-on:click="showRecipeInfo(day)">Show More Info</button>
+        <hr>
       </li>
     </ul>
     <dialog id="show-modal">
