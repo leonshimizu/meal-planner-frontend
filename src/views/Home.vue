@@ -105,8 +105,9 @@ export default {
       console.log("in the recipe info function");
       document.querySelector("#show-modal").showModal();
       this.currentMealPlan = theMealPlan;
+      // console.log(this.currentMealPlan.meals);
       axios
-        .get(`https://api.spoonacular.com/recipes/informationBulk?ids=${this.currentMealPlan.meals[0].id},${this.currentMealPlan.meals[1].id},${this.currentMealPlan.meals[2].id}&apiKey=${this.apiKey2}&includeNutrition=true`)
+        .get(`http://localhost:3000/meals_generate?meal1=${this.currentMealPlan.meals[0].id}&meal2=${this.currentMealPlan.meals[1].id}&meal3=${this.currentMealPlan.meals[2].id}`)
         .then(response => {
           console.log(response.data);
           this.recipeInfo = response.data;
