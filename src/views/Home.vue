@@ -121,18 +121,18 @@ export default {
     },
     saveMealPlan: function() {
       console.log("in the process of saving the meal plan");
-      axios 
-        .post(`http://localhost:3000/meal_plans`, {
-          diet: this.diet,
-          allergies: this.allergies, 
-          timeFrame: "week",
-          calories: this.calories
-        })
-        .then(response => {
-          console.log(response.data);
-          this.mealPlan = response.data;
-          // this.id = response.data.id
-        })
+      // axios // uncomment when ready to save meal plans
+      //   .post(`http://localhost:3000/meal_plans`, {
+      //     diet: this.diet,
+      //     allergies: this.allergies, 
+      //     timeFrame: "week",
+      //     calories: this.calories
+      //   })
+      //   .then(response => {
+      //     console.log(response.data);
+      //     this.mealPlan = response.data;
+      //     // this.id = response.data.id
+      //   })
       console.log(this.days);
       axios 
         .post('/meals', this.days)
