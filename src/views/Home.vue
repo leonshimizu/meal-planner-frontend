@@ -96,7 +96,7 @@ export default {
       // var dietNoSpace = this.diet.splice(this.diet.indexOf(' '), 1);
       // console.log(dietNoSpace);
       axios
-        .get(`http://localhost:3000/meal_plans_generate?diet=${this.diet}&calories=${this.calories}&allergies=${this.allergies}`)
+        .get(`/meal_plans_generate?diet=${this.diet}&calories=${this.calories}&allergies=${this.allergies}`)
         .then(response => {
           console.log(response.data);
           this.days = response.data;
@@ -113,7 +113,7 @@ export default {
       this.currentMealPlan = theMealPlan;
       // console.log(this.currentMealPlan.meals);
       axios
-        .get(`http://localhost:3000/meals_generate?meal1=${this.currentMealPlan.meals[0].id}&meal2=${this.currentMealPlan.meals[1].id}&meal3=${this.currentMealPlan.meals[2].id}`)
+        .get(`/meals_generate?meal1=${this.currentMealPlan.meals[0].id}&meal2=${this.currentMealPlan.meals[1].id}&meal3=${this.currentMealPlan.meals[2].id}`)
         .then(response => {
           console.log(response.data);
           this.recipeInfo = response.data;
@@ -133,39 +133,45 @@ export default {
           this.mealPlan = response.data;
           // this.id = response.data.id
         })
-      var meal = Object.entries(this.days.week);
-      // console.log(meal[0][1].meals[0].id); // recipe id
-      // console.log(meal[1][0]); // day of week
-      // console.log(meal[0][1].meals[0]); // potentially meal type
-      setTimeout(() => {
-        console.log("waiting 3 seconds");
-        for (var i = 0; i < Object.entries(this.days.week).length; i++) {
-          for (var j = 0; j < 3; j++) {
-            var mealType = ""
-            if (j === 0) {
-              mealType = "breakfast";
-            } else if (j === 1) {
-              mealType = "lunch";
-            } else if (j === 2) {
-              mealType = "dinner"
-            } else {
-              mealType = "failed"
-            }
+      console.log(this.days);
+      axios 
+        .post('/meals', this.days)
+        .then(response => {
+          console.log(response.data);
+        })
+      // var meal = Object.entries(this.days.week);
+      // // console.log(meal[0][1].meals[0].id); // recipe id
+      // // console.log(meal[1][0]); // day of week
+      // // console.log(meal[0][1].meals[0]); // potentially meal type
+      // setTimeout(() => {
+      //   console.log("waiting 3 seconds");
+      //   for (var i = 0; i < Object.entries(this.days.week).length; i++) {
+      //     for (var j = 0; j < 3; j++) {
+      //       var mealType = ""
+      //       if (j === 0) {
+      //         mealType = "breakfast";
+      //       } else if (j === 1) {
+      //         mealType = "lunch";
+      //       } else if (j === 2) {
+      //         mealType = "dinner"
+      //       } else {
+      //         mealType = "failed"
+      //       }
 
-            axios 
-              .post(`http://localhost:3000/meals`, {
-                meal_plan_id: this.mealPlan.id, 
-                user_id: 2, // still need to make dynamic 
-                day_of_week: meal[i][0], // should work correct - still need to double check
-                meal_type: mealType,
-                recipe_id: meal[i][1].meals[j].id
-              })
-              .then(response => {
-                console.log(response.data);
-              })
-            }
-          }        
-      }, 3000);
+      //       axios 
+      //         .post(`http://localhost:3000/meals`, {
+      //           meal_plan_id: this.mealPlan.id, 
+      //           user_id: 2, // still need to make dynamic 
+      //           day_of_week: meal[i][0], // should work correct - still need to double check
+      //           meal_type: mealType,
+      //           recipe_id: meal[i][1].meals[j].id
+      //         })
+      //         .then(response => {
+      //           console.log(response.data);
+      //         })
+      //       }
+      //     }        
+      // }, 3000);
     }
   }
 }
