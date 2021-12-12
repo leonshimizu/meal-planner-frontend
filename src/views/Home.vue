@@ -89,8 +89,7 @@ export default {
     createMealPlan: function() {
       console.log("in the index/create meal plan function");
       axios
-        .get('http://localhost:3000/meal_plans_generate')
-        // .get(`https://api.spoonacular.com/mealplanner/generate?timeFrame=week&apiKey=${this.apiKey1}&targetCalories=${this.calories}&diet=${this.diet}&exlude=${this.allergies}`)
+        .get(`http://localhost:3000/meal_plans_generate?diet=${this.diet}&calories=${this.calories}&allergies=${this.allergies}`)
         .then(response => {
           console.log(response.data);
           this.days = response.data;
