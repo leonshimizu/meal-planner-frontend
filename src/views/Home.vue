@@ -13,11 +13,12 @@
     <button v-on:click="saveMealPlan()">Save Meal Plan</button>
     <br>
     <ul>
-      <li v-for="day in days">
-        <p>Breakfast: {{ day.meals[0].title }}</p>
-        <p>Lunch: {{ day.meals[1].title }}</p>
-        <p>Dinner: {{ day.meals[2].title }}</p>
-        <button v-on:click="showRecipeInfo(day)">Show More Info</button>
+      <li v-for="(value, key) in days">
+        <p><b>{{ key.charAt(0).toUpperCase() + key.slice(1) }}</b></p>
+        <p>Breakfast: {{ value.meals[0].title }}</p>
+        <p>Lunch: {{ value.meals[1].title }}</p>
+        <p>Dinner: {{ value.meals[2].title }}</p>
+        <button v-on:click="showRecipeInfo(value)">Show More Info</button>
         <hr>
       </li>
     </ul>
