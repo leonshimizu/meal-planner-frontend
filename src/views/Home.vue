@@ -58,7 +58,7 @@ export default {
       apiKey3: process.env.VUE_APP_SPOONACULAR_API_KEY_THREE,
       welcomeMessage: "Welcome to the Meal Plan Generator!",
       days: [],
-      diet: "Gluten Free",
+      diet: "GlutenFree",
       calories: "1200",
       allergies: "Peanut",
       currentMealPlan: {},
@@ -88,6 +88,13 @@ export default {
   methods: {
     createMealPlan: function() {
       console.log("in the index/create meal plan function");
+      // if (this.diet.indexOf(' ') > 0) {
+      //   this.diet.splice(index, this.diet.indexOf(' '))
+      // }
+      // console.log(this.diet); // words with spaces do not work - have to input without spaces
+      // console.log(this.diet.indexOf(' '));
+      // var dietNoSpace = this.diet.splice(this.diet.indexOf(' '), 1);
+      // console.log(dietNoSpace);
       axios
         .get(`http://localhost:3000/meal_plans_generate?diet=${this.diet}&calories=${this.calories}&allergies=${this.allergies}`)
         .then(response => {
