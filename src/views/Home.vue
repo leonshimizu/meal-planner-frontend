@@ -140,39 +140,6 @@ export default {
         .then(response => {
           console.log(response.data);
         })
-      // var meal = Object.entries(this.days.week);
-      // // console.log(meal[0][1].meals[0].id); // recipe id
-      // // console.log(meal[1][0]); // day of week
-      // // console.log(meal[0][1].meals[0]); // potentially meal type
-      // setTimeout(() => {
-      //   console.log("waiting 3 seconds");
-      //   for (var i = 0; i < Object.entries(this.days.week).length; i++) {
-      //     for (var j = 0; j < 3; j++) {
-      //       var mealType = ""
-      //       if (j === 0) {
-      //         mealType = "breakfast";
-      //       } else if (j === 1) {
-      //         mealType = "lunch";
-      //       } else if (j === 2) {
-      //         mealType = "dinner"
-      //       } else {
-      //         mealType = "failed"
-      //       }
-
-      //       axios 
-      //         .post(`http://localhost:3000/meals`, {
-      //           meal_plan_id: this.mealPlan.id, 
-      //           user_id: 2, // still need to make dynamic 
-      //           day_of_week: meal[i][0], // should work correct - still need to double check
-      //           meal_type: mealType,
-      //           recipe_id: meal[i][1].meals[j].id
-      //         })
-      //         .then(response => {
-      //           console.log(response.data);
-      //         })
-      //       }
-      //     }        
-      // }, 3000);
     }
   }
 }
