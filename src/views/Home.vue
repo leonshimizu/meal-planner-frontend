@@ -123,7 +123,7 @@ export default {
     saveMealPlan: function() {
       console.log("in the process of saving the meal plan");
       axios // uncomment when ready to save meal plans
-        .post(`http://localhost:3000/meal_plans`, {
+        .post(`/meal_plans`, {
           diet: this.diet,
           allergies: this.allergies, 
           timeFrame: "week",
