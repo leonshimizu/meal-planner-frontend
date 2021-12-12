@@ -69,6 +69,7 @@
         apiKey1: process.env.VUE_APP_SPOONACULAR_API_KEY_ONE,
         apiKey2: process.env.VUE_APP_SPOONACULAR_API_KEY_TWO,
         apiKey3: process.env.VUE_APP_SPOONACULAR_API_KEY_THREE,
+        apiKey4: process.env.VUE_APP_SPOONACULAR_API_KEY_FOUR,
         allMeals: []
       };
     },
@@ -95,7 +96,7 @@
           // console.log(this.meals.length)
           for (var i = 0; i < this.meals.length; i++) {
             axios 
-              .get(`https://api.spoonacular.com/recipes/informationBulk?ids=${this.meals[i].recipe_id}&apiKey=${this.apiKey3}&includeNutrition=true`)
+              .get(`https://api.spoonacular.com/recipes/informationBulk?ids=${this.meals[i].recipe_id}&apiKey=${this.apiKey4}&includeNutrition=true`)
               .then(response => {
                 console.log(response.data);
                 this.allMeals = response.data;
