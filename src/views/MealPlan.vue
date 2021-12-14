@@ -106,7 +106,7 @@
         this.currentMeal = theMeal;
         console.log(this.currentMeal.id);
         axios 
-          .get(`https://api.spoonacular.com/recipes/informationBulk?ids=${this.currentMeal.id}&apiKey=${this.apiKey2}&includeNutrition=true`)
+          .get(`/extra_info?meal_id=${this.currentMeal.id}`)
           .then(response => {
             console.log(response.data);
             this.info = response.data[0];
