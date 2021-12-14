@@ -31,9 +31,9 @@
           {{ info.nutrition && info.nutrition.nutrients[3].title }}: {{ info.nutrition && info.nutrition.nutrients[3].amount }} {{ info.nutrition && info.nutrition.nutrients[3].unit }}
           {{ info.nutrition && info.nutrition.nutrients[5].title }}: {{ info.nutrition && info.nutrition.nutrients[5].amount }} {{ info.nutrition && info.nutrition.nutrients[5].unit }}
           {{ info.nutrition && info.nutrition.nutrients[6].title }}: {{ info.nutrition && info.nutrition.nutrients[6].amount }} {{ info.nutrition && info.nutrition.nutrients[6].unit }}
-          <!-- {{ info.nutrition && info.nutrition.nutrients[7].title }}: {{ info.nutrition && info.nutrition.nutrients[7].amount }} {{ info.nutrition && info.nutrition.nutrients[7].unit }}
-          {{ info.nutrition && info.nutrition.nutrients[8].title }}: {{ info.nutrition && info.nutrition.nutrients[8].amount }} {{ info.nutrition && info.nutrition.nutrients[8].unit }}
-          {{ info.nutrition && info.nutrition.nutrients[9].title }}: {{ info.nutrition && info.nutrition.nutrients[9].amount }} {{ info.nutrition && info.nutrition.nutrients[9].unit }} -->
+          {{ info.nutrition && info.nutrition.nutrients[7].title }}: {{ info.nutrition && info.nutrition.nutrients[7].amount }} {{ info.nutrition && info.nutrition.nutrients[7].unit }}
+          <!-- {{ info.nutrition && info.nutrition.nutrients[8].title }}: {{ info.nutrition && info.nutrition.nutrients[8].amount }} {{ info.nutrition && info.nutrition.nutrients[8].unit }} -->
+          <!-- {{ info.nutrition && info.nutrition.nutrients[9].title }}: {{ info.nutrition && info.nutrition.nutrients[9].amount }} {{ info.nutrition && info.nutrition.nutrients[9].unit }} -->
         </p>
         <button>Close</button>
       </form>
