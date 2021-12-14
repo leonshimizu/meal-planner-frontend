@@ -9,8 +9,8 @@
     <hr>
     <ul>
       <li v-for="meal in allMeals">
-        <p>Title: {{ meal["title"] }}</p>
-        <p>Image: {{ meal.image }}</p>
+        <p><strong>Title: {{ meal["title"] }}</strong></p>
+        <img v-bind:src="meal.image">
         <p>Prep Time: {{ meal.preparationMinutes }}</p>
         <p>Cook Time: {{ meal.cookingMinutes }}</p>
         <p>Servings: {{ meal.servings }}</p>
@@ -20,7 +20,21 @@
     </ul>
     <dialog id="extra-modal">
       <form method="dialog">
-        <!-- {{ info[0].instructions }} -->
+        <p>Instructions: {{ info.instructions }}</p>
+        <p>Ingredients:</p>
+        <p v-for="ingredient in info.extendedIngredients">
+          {{ ingredient.amount }} {{ ingredient.unit }} of {{ ingredient.name }},
+        </p>
+        <!-- <p> doesn't work on page load, works if loaded after page load - maybe defer or setTimeout 
+          {{ info.nutrition.nutrients[0].title }}: {{ info.nutrition.nutrients[0].amount }} {{ info.nutrition.nutrients[0].unit }}
+          {{ info.nutrition.nutrients[1].title }}: {{ info.nutrition.nutrients[1].amount }} {{ info.nutrition.nutrients[1].unit }}
+          {{ info.nutrition.nutrients[3].title }}: {{ info.nutrition.nutrients[3].amount }} {{ info.nutrition.nutrients[3].unit }}
+          {{ info.nutrition.nutrients[5].title }}: {{ info.nutrition.nutrients[5].amount }} {{ info.nutrition.nutrients[5].unit }}
+          {{ info.nutrition.nutrients[6].title }}: {{ info.nutrition.nutrients[6].amount }} {{ info.nutrition.nutrients[6].unit }}
+          {{ info.nutrition.nutrients[7].title }}: {{ info.nutrition.nutrients[7].amount }} {{ info.nutrition.nutrients[7].unit }}
+          {{ info.nutrition.nutrients[8].title }}: {{ info.nutrition.nutrients[8].amount }} {{ info.nutrition.nutrients[8].unit }}
+          {{ info.nutrition.nutrients[9].title }}: {{ info.nutrition.nutrients[9].amount }} {{ info.nutrition.nutrients[9].unit }}
+        </p> -->
         <button>Close</button>
       </form>
     </dialog>
@@ -49,7 +63,12 @@
         apiKey4: process.env.VUE_APP_SPOONACULAR_API_KEY_FOUR,
         allMeals: {},
         currentMeal: {},
-        info: {}
+        info: {
+          nutrition: {
+            nutrients: [0, 1, 3, 5, 6, 7, 8, 9]
+          }
+        },
+        // nutrition: [0, 1, 3, 5, 6, 7, 8, 9]
       };
     },
     created: function () {
@@ -87,10 +106,10 @@
         this.currentMeal = theMeal;
         console.log(this.currentMeal.id);
         axios 
-          .get(`https://api.spoonacular.com/recipes/informationBulk?ids=${this.currentMeal.id}&apiKey=${this.apiKey4}&includeNutrition=true`)
+          .get(`https://api.spoonacular.com/recipes/informationBulk?ids=${this.currentMeal.id}&apiKey=${this.apiKey5}&includeNutrition=true`)
           .then(response => {
             console.log(response.data);
-            this.info = response.data;
+            this.info = response.data[0];
           })
       }
     },
