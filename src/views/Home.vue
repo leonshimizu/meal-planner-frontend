@@ -10,20 +10,16 @@
     <br>
     <button v-on:click="createMealPlan()">Generate Meal Plan</button>
     <br>
-    <br>
     <button v-on:click="saveMealPlan()">Save Meal Plan</button>
-    <hr>
+    <br>
     <ul>
-      <li v-for="(key, value) in days.week">
-        <ul><b>{{ value.charAt(0).toUpperCase() + value.slice(1) }}</b>
-          <li>
-            <p>Breakfast: {{ key.meals[0].title }}</p>
-            <p>Lunch: {{ key.meals[1].title }}</p>
-            <p>Dinner: {{ key.meals[2].title }}</p>
-            <button v-on:click="showRecipeInfo(key)">Show More Info</button>
-            <hr>
-          </li>
-        </ul>
+      <li v-for="(value, key) in days">
+        <p><b>{{ key.charAt(0).toUpperCase() + key.slice(1) }}</b></p>
+        <p>Breakfast: {{ value.meals[0].title }}</p>
+        <p>Lunch: {{ value.meals[1].title }}</p>
+        <p>Dinner: {{ value.meals[2].title }}</p>
+        <button v-on:click="showRecipeInfo(value)">Show More Info</button>
+        <hr>
       </li>
     </ul>
     <dialog id="show-modal">
@@ -63,7 +59,7 @@ export default {
       apiKey3: process.env.VUE_APP_SPOONACULAR_API_KEY_THREE,
       welcomeMessage: "Welcome to the Meal Plan Generator!",
       days: [],
-      diet: "Gluten Free",
+      diet: "GlutenFree",
       calories: "1200",
       allergies: "Peanut",
       currentMealPlan: {},
@@ -93,8 +89,15 @@ export default {
   methods: {
     createMealPlan: function() {
       console.log("in the index/create meal plan function");
+      // if (this.diet.indexOf(' ') > 0) {
+      //   this.diet.splice(index, this.diet.indexOf(' '))
+      // }
+      // console.log(this.diet); // words with spaces do not work - have to input without spaces
+      // console.log(this.diet.indexOf(' '));
+      // var dietNoSpace = this.diet.splice(this.diet.indexOf(' '), 1);
+      // console.log(dietNoSpace);
       axios
-        .get(`https://api.spoonacular.com/mealplanner/generate?timeFrame=week&apiKey=${this.apiKey1}&targetCalories=${this.calories}&diet=${this.diet}&exlude=${this.allergies}`)
+        .get(`/meal_plans_generate?diet=${this.diet}&calories=${this.calories}&allergies=${this.allergies}`)
         .then(response => {
           console.log(response.data);
           this.days = response.data;
@@ -109,8 +112,9 @@ export default {
       console.log("in the recipe info function");
       document.querySelector("#show-modal").showModal();
       this.currentMealPlan = theMealPlan;
+      // console.log(this.currentMealPlan.meals);
       axios
-        .get(`https://api.spoonacular.com/recipes/informationBulk?ids=${this.currentMealPlan.meals[0].id},${this.currentMealPlan.meals[1].id},${this.currentMealPlan.meals[2].id}&apiKey=${this.apiKey2}&includeNutrition=true`)
+        .get(`/meals_generate?meal1=${this.currentMealPlan.meals[0].id}&meal2=${this.currentMealPlan.meals[1].id}&meal3=${this.currentMealPlan.meals[2].id}`)
         .then(response => {
           console.log(response.data);
           this.recipeInfo = response.data;
@@ -118,8 +122,8 @@ export default {
     },
     saveMealPlan: function() {
       console.log("in the process of saving the meal plan");
-      axios 
-        .post(`http://localhost:3000/meal_plans`, {
+      axios // uncomment when ready to save meal plans
+        .post(`/meal_plans`, {
           diet: this.diet,
           allergies: this.allergies, 
           timeFrame: "week",
@@ -130,39 +134,12 @@ export default {
           this.mealPlan = response.data;
           // this.id = response.data.id
         })
-      var meal = Object.entries(this.days.week);
-      // console.log(meal[0][1].meals[0].id); // recipe id
-      // console.log(meal[1][0]); // day of week
-      // console.log(meal[0][1].meals[0]); // potentially meal type
-      setTimeout(() => {
-        console.log("waiting 3 seconds");
-        for (var i = 0; i < Object.entries(this.days.week).length; i++) {
-          for (var j = 0; j < 3; j++) {
-            var mealType = ""
-            if (j === 0) {
-              mealType = "breakfast";
-            } else if (j === 1) {
-              mealType = "lunch";
-            } else if (j === 2) {
-              mealType = "dinner"
-            } else {
-              mealType = "failed"
-            }
-
-            axios 
-              .post(`http://localhost:3000/meals`, {
-                meal_plan_id: this.mealPlan.id, 
-                user_id: 2, // still need to make dynamic 
-                day_of_week: meal[i][0], // should work correct - still need to double check
-                meal_type: mealType,
-                recipe_id: meal[i][1].meals[j].id
-              })
-              .then(response => {
-                console.log(response.data);
-              })
-            }
-          }        
-      }, 3000);
+      console.log(this.days);
+      axios 
+        .post('/meals', this.days)
+        .then(response => {
+          console.log(response.data);
+        })
     }
   }
 }
