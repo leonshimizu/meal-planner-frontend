@@ -7,6 +7,7 @@
     <p>Calories: {{ meal_plan[0].calories }}</p>
     <p>Created: {{ meal_plan[0].created_at }}</p>
     <hr>
+    <!-- {{ mealData }} -->
     <ul>
       <li v-for="meal in allMeals">
         <p><strong>Title: {{ meal["title"] }}</strong></p>
@@ -68,6 +69,7 @@
             nutrients: [0, 1, 3, 5, 6, 7, 8, 9]
           }
         },
+        mealData: {}
         // nutrition: [0, 1, 3, 5, 6, 7, 8, 9]
       };
     },
@@ -84,27 +86,27 @@
             // console.log(response.data);
             this.meal_plan = response.data;
           })
-        axios 
-          .get('/meals')
-          .then(response => {
-            // console.log(response.data);
-            this.meals = response.data;
-          })
       },
       recipeShow: function() { 
         console.log("in the meals show");
         axios 
           .get('/all_meals')
           .then(response => {
-            console.log(response.data);
+            // console.log(response.data);
             this.allMeals = response.data;
+          })
+        axios 
+          .get('/meals')
+          .then(response => {
+            console.log(response.data);
+            this.mealData = response.data;
           })
       },
       extraInfo: function(theMeal) {
         console.log("in the extra info function");
         document.querySelector("#extra-modal").showModal();
         this.currentMeal = theMeal;
-        console.log(this.currentMeal.id);
+        // console.log(this.currentMeal.id);
         axios 
           .get(`/extra_info?meal_id=${this.currentMeal.id}`)
           .then(response => {
