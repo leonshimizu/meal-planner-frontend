@@ -25,16 +25,16 @@
         <p v-for="ingredient in info.extendedIngredients">
           {{ ingredient.amount }} {{ ingredient.unit }} of {{ ingredient.name }},
         </p>
-        <!-- <p> doesn't work on page load, works if loaded after page load - maybe defer or setTimeout 
-          {{ info.nutrition.nutrients[0].title }}: {{ info.nutrition.nutrients[0].amount }} {{ info.nutrition.nutrients[0].unit }}
-          {{ info.nutrition.nutrients[1].title }}: {{ info.nutrition.nutrients[1].amount }} {{ info.nutrition.nutrients[1].unit }}
-          {{ info.nutrition.nutrients[3].title }}: {{ info.nutrition.nutrients[3].amount }} {{ info.nutrition.nutrients[3].unit }}
-          {{ info.nutrition.nutrients[5].title }}: {{ info.nutrition.nutrients[5].amount }} {{ info.nutrition.nutrients[5].unit }}
-          {{ info.nutrition.nutrients[6].title }}: {{ info.nutrition.nutrients[6].amount }} {{ info.nutrition.nutrients[6].unit }}
-          {{ info.nutrition.nutrients[7].title }}: {{ info.nutrition.nutrients[7].amount }} {{ info.nutrition.nutrients[7].unit }}
-          {{ info.nutrition.nutrients[8].title }}: {{ info.nutrition.nutrients[8].amount }} {{ info.nutrition.nutrients[8].unit }}
-          {{ info.nutrition.nutrients[9].title }}: {{ info.nutrition.nutrients[9].amount }} {{ info.nutrition.nutrients[9].unit }}
-        </p> -->
+        <p> 
+          {{ info.nutrition && info.nutrition.nutrients[0].title }}: {{ info.nutrition && info.nutrition.nutrients[0].amount }} {{ info.nutrition && info.nutrition.nutrients[0].unit }}
+          {{ info.nutrition && info.nutrition.nutrients[1].title }}: {{ info.nutrition && info.nutrition.nutrients[1].amount }} {{ info.nutrition && info.nutrition.nutrients[1].unit }}
+          {{ info.nutrition && info.nutrition.nutrients[3].title }}: {{ info.nutrition && info.nutrition.nutrients[3].amount }} {{ info.nutrition && info.nutrition.nutrients[3].unit }}
+          {{ info.nutrition && info.nutrition.nutrients[5].title }}: {{ info.nutrition && info.nutrition.nutrients[5].amount }} {{ info.nutrition && info.nutrition.nutrients[5].unit }}
+          {{ info.nutrition && info.nutrition.nutrients[6].title }}: {{ info.nutrition && info.nutrition.nutrients[6].amount }} {{ info.nutrition && info.nutrition.nutrients[6].unit }}
+          <!-- {{ info.nutrition && info.nutrition.nutrients[7].title }}: {{ info.nutrition && info.nutrition.nutrients[7].amount }} {{ info.nutrition && info.nutrition.nutrients[7].unit }}
+          {{ info.nutrition && info.nutrition.nutrients[8].title }}: {{ info.nutrition && info.nutrition.nutrients[8].amount }} {{ info.nutrition && info.nutrition.nutrients[8].unit }}
+          {{ info.nutrition && info.nutrition.nutrients[9].title }}: {{ info.nutrition && info.nutrition.nutrients[9].amount }} {{ info.nutrition && info.nutrition.nutrients[9].unit }} -->
+        </p>
         <button>Close</button>
       </form>
     </dialog>
@@ -106,7 +106,7 @@
         this.currentMeal = theMeal;
         console.log(this.currentMeal.id);
         axios 
-          .get(`https://api.spoonacular.com/recipes/informationBulk?ids=${this.currentMeal.id}&apiKey=${this.apiKey5}&includeNutrition=true`)
+          .get(`https://api.spoonacular.com/recipes/informationBulk?ids=${this.currentMeal.id}&apiKey=${this.apiKey2}&includeNutrition=true`)
           .then(response => {
             console.log(response.data);
             this.info = response.data[0];
