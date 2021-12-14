@@ -48,39 +48,17 @@
 import axios from 'axios'
 export default {
   name: 'Home',
-   mounted() {
-    console.log(process.env.VUE_APP_TITLE)
-  },
   components: {},
   data: function() {
     return {
-      apiKey1: process.env.VUE_APP_SPOONACULAR_API_KEY_ONE,
-      apiKey2: process.env.VUE_APP_SPOONACULAR_API_KEY_TWO,
-      apiKey3: process.env.VUE_APP_SPOONACULAR_API_KEY_THREE,
       welcomeMessage: "Welcome to the Meal Plan Generator!",
       days: [],
       diet: "GlutenFree",
       calories: "1200",
       allergies: "Peanut",
       currentMealPlan: {},
-      recipeInfo: {
-        preparationMinutes: [],
-        cookingMinutes: [],
-        pricePerServing: [],
-        title: [],
-        extendedIngredients: {},
-        readyInMinutes: [],
-        servings: [],
-        summary: [],
-        dishType: [],
-        diets: [],
-        winePairing: {},
-        instructions: [],
-        analyzedInstructions: {},
-        spoonacularSourceUrl: []
-      },
+      recipeInfo: {},
       mealPlan: {},
-      // id: undefined
     }
   },
   created: function() {
@@ -89,13 +67,7 @@ export default {
   methods: {
     createMealPlan: function() {
       console.log("in the index/create meal plan function");
-      // if (this.diet.indexOf(' ') > 0) {
-      //   this.diet.splice(index, this.diet.indexOf(' '))
-      // }
-      // console.log(this.diet); // words with spaces do not work - have to input without spaces
-      // console.log(this.diet.indexOf(' '));
-      // var dietNoSpace = this.diet.splice(this.diet.indexOf(' '), 1);
-      // console.log(dietNoSpace);
+      // words with spaces do not work - have to input without spaces
       axios
         .get(`/meal_plans_generate?diet=${this.diet}&calories=${this.calories}&allergies=${this.allergies}`)
         .then(response => {
@@ -112,7 +84,6 @@ export default {
       console.log("in the recipe info function");
       document.querySelector("#show-modal").showModal();
       this.currentMealPlan = theMealPlan;
-      // console.log(this.currentMealPlan.meals);
       axios
         .get(`/meals_generate?meal1=${this.currentMealPlan.meals[0].id}&meal2=${this.currentMealPlan.meals[1].id}&meal3=${this.currentMealPlan.meals[2].id}`)
         .then(response => {
@@ -122,7 +93,7 @@ export default {
     },
     saveMealPlan: function() {
       console.log("in the process of saving the meal plan");
-      axios // uncomment when ready to save meal plans
+      axios 
         .post(`/meal_plans`, {
           diet: this.diet,
           allergies: this.allergies, 
@@ -132,9 +103,8 @@ export default {
         .then(response => {
           console.log(response.data);
           this.mealPlan = response.data;
-          // this.id = response.data.id
         })
-      console.log(this.days);
+      // console.log(this.days);
       axios 
         .post('/meals', this.days)
         .then(response => {

@@ -57,11 +57,6 @@
           calories: [],
           created_at: []
         },
-        meals: {},
-        apiKey1: process.env.VUE_APP_SPOONACULAR_API_KEY_ONE,
-        apiKey2: process.env.VUE_APP_SPOONACULAR_API_KEY_TWO,
-        apiKey3: process.env.VUE_APP_SPOONACULAR_API_KEY_THREE,
-        apiKey4: process.env.VUE_APP_SPOONACULAR_API_KEY_FOUR,
         allMeals: {},
         currentMeal: {},
         info: {
@@ -70,7 +65,7 @@
           }
         },
         mealData: {}
-        // nutrition: [0, 1, 3, 5, 6, 7, 8, 9]
+        // nutrition: [0, 1, 3, 5, 6, 7, 8, 9] // array to make loop for nutrional data
       };
     },
     created: function () {
@@ -83,7 +78,7 @@
         axios 
           .get('/meal_plans')
           .then(response => {
-            // console.log(response.data);
+            console.log(response.data);
             this.meal_plan = response.data;
           })
       },
@@ -92,7 +87,7 @@
         axios 
           .get('/all_meals')
           .then(response => {
-            // console.log(response.data);
+            console.log(response.data);
             this.allMeals = response.data;
           })
         axios 
