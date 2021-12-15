@@ -93,11 +93,6 @@
   </div>
 </template>
 
-<p>Prep Time: {{ meal.preparationMinutes }}</p>
-<p>Cook Time: {{ meal.cookingMinutes }}</p>
-<p>Servings: {{ meal.servings }}</p>
-<p>Price Per Serving: {{ meal.pricePerServing }}</p>
-
 <script>
 import axios from 'axios'
 export default {

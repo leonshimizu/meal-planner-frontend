@@ -26,13 +26,13 @@
                         <div class="card-body p-3">
                             <div class="text-center">
                                 <!-- Product name-->
-                                <h5 class="fw-bolder">Title: {{ meal.title }}</h5>
+                                <h5 class="fw-bolder">{{ meal.title }}</h5>
                                 <!-- Product price-->
                                 <p>Prep Time: {{ meal.preparationMinutes }}</p>
                                 <p>Cook Time: {{ meal.cookingMinutes }}</p>
                                 <p>Servings: {{ meal.servings }}</p>
                                 <p>Price Per Serving: {{ meal.pricePerServing }}</p>
-                                <!-- <button type="button" class="btn btn-primary" v-on:click="showRecipeInfo(value)">Show More Info</button> -->
+                                <button type="button" class="btn btn-primary" v-on:click="extraInfo(meal)">Show More Info</button>
                             </div>
                         </div>
                         <!-- Product actions-->
@@ -43,18 +43,42 @@
             </div>
         </div>
     </section>  
+
+    <!-- Extra Modal -->
+    <!-- <dialog id="extra-modal">
+      <form method="dialog">
+        <div class="card text-center">
+          <img v-bind:src="recipe.image" alt="..." style="max-width: 500px; text-align:center">
+          <div class="card-header">
+            <strong>{{ info }}</strong>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              <b>Ingredients: </b>
+              <span v-for="product in recipe.extendedIngredients">
+                {{ product.amount }} {{ product.unit }} of {{ product.name }}, 
+              </span>
+            </p>
+            <p class="card-text">
+              <b>Prep Time:</b> {{ recipe.preparationMinutes }}, <b>Cook Time:</b> {{ recipe.cookingMinutes }}
+            </p>
+            <p class="card-text">
+              <b>Servings:</b> {{ recipe.servings }}, <b>Price Per Serving:</b> {{ recipe.pricePerServing }}
+            </p>
+            <p class="card-text"><strong>Instructions:</strong> {{ recipe.instructions }}</p>
+            <p class="card-text">
+              <b>Nutritional Facts: </b>
+              <span v-for="info,$index in recipe.nutrition.nutrients" v-if="$index !== 2 && $index !== 4 && $index < 10">
+                {{ info.title }}: {{ info.amount }}{{ info.unit }}, 
+              </span>
+            </p>
+          </div>
+        </div>  
+        <br>
+        <button class="btn btn-warning">Close</button>
+      </form>
+    </dialog> -->
 <!-- 
-    <ul>
-      <li v-for="meal in allMeals">
-        <p><strong>Title: {{ meal.title }}</strong></p>
-        <img v-bind:src="meal.image">
-        <p>Prep Time: {{ meal.preparationMinutes }}</p>
-        <p>Cook Time: {{ meal.cookingMinutes }}</p>
-        <p>Servings: {{ meal.servings }}</p>
-        <p>Price Per Serving: {{ meal.pricePerServing }}</p>
-        <button v-on:click="extraInfo(meal)">Show More Info</button>
-      </li>
-    </ul>
     <dialog id="extra-modal">
       <form method="dialog">
         <p>Instructions: {{ info.instructions }}</p>
