@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="recipes">
     <h1>Welcome to the Recipe Generator!</h1>
     <h3>Here are some example recipes, if you choose to, here are some filters you can use:</h3>
     <p>Diets: Gluten Free, Ketogenic, Vegetarian, Lacto-Vegetarian, Ovo-Vegetarian, Vegan, Pescetarian, Paleo, Primal, low FODMAP, and Whole30 (for more infomation, visit <a href="https://spoonacular.com/food-api/docs#Diets">Diets)</a></p>

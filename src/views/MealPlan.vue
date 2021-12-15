@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="mealPlan">
     <h1>{{ message }}</h1>
     <p>Diet: {{ meal_plan[0].diet }}</p>
     <p>Allergies: {{ meal_plan[0].allergies }}</p>

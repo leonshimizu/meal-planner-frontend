@@ -1,6 +1,34 @@
 <template>
   <div class="home">
-    <h1>Welcome to the Meal Plan Generator!</h1>
+          <!-- Header-->
+      <header class="bg-dark py-5">
+          <div class="container px-4 px-lg-5 my-5">
+              <div class="text-center text-white">
+                  <h1 class="display-4 fw-bolder">Welcome to the Meal Plan Generator!</h1>
+                  <p class="lead fw-normal text-white-50 mb-0">Please select from the following diets:</p>
+                  <p class="fw-normal text-white-50 mb-0">Diets: Gluten Free, Ketogenic, Vegetarian, Lacto-Vegetarian, Ovo-Vegetarian, Vegan, Pescetarian, Paleo, Primal, low FODMAP, or Whole30 (for more infomation, visit <a href="https://spoonacular.com/food-api/docs#Diets">Diets)</a></p>
+                  <p class="fw-normal text-white-50 mb-0">Please, input your filters of choice:</p>
+                  <br>
+                  <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Diet</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" v-model="diet">
+                  </div>
+                  <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Calories</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" v-model="calories">
+                  </div>
+                  <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Allergies</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" v-model="allergies">
+                  </div>
+                  <button type="button" class="btn btn-success" v-on:click="createMealPlan()">Generate Meal Plan</button>
+                  <br>
+                  <br>
+                  <button type="button" class="btn btn-success" v-on:click="saveMealPlan()">Save Meal Plan</button>
+              </div>
+          </div>
+      </header>
+    <!-- <h1>Welcome to the Meal Plan Generator!</h1>
     <h3>Please select from the following diets:</h3>
     <p>Diets: Gluten Free, Ketogenic, Vegetarian, Lacto-Vegetarian, Ovo-Vegetarian, Vegan, Pescetarian, Paleo, Primal, low FODMAP, or Whole30 (for more infomation, visit <a href="https://spoonacular.com/food-api/docs#Diets">Diets)</a></p>
     <p>Now please, input your filters of choice:</p>
@@ -11,7 +39,7 @@
     <button v-on:click="createMealPlan()">Generate Meal Plan</button>
     <br>
     <button v-on:click="saveMealPlan()">Save Meal Plan</button>
-    <br>
+    <br> -->
     <ul>
       <li v-for="(value, key) in days">
         <p><b>{{ key.charAt(0).toUpperCase() + key.slice(1) }}</b></p>
