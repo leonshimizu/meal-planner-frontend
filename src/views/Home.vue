@@ -56,43 +56,39 @@
             </div>
         </div>
     </section>      
-
     <!-- Show Modal -->
-    <!-- <div id="show-modal" class="modal" tabindex="-1">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Modal title</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <p>Modal body text goes here.</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
     <dialog id="show-modal">
       <form method="dialog">
-        <ul>
-          <li v-for="recipe in recipeInfo">
-            <p>Title: {{ recipe.title }}</p>
-            <p>
-              Ingredients: 
-              <ul>
-                <li v-for="product in recipe.extendedIngredients">
-                  <p>{{ product.amount }} {{ product.unit }} of {{ product.name }}</p>
-                </li>
-              </ul>
+        <div class="card text-center" v-for="recipe in recipeInfo">
+          <div class="card-header">
+            <strong>{{ recipe.title }}</strong>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              <table>
+                <th>
+                  Ingredients: 
+                </th>
+                <td v-for="product in recipe.extendedIngredients">
+                  {{ product.amount }} {{ product.unit }} of {{ product.name }}
+                </td>
+              </table>
             </p>
-            <p>{{ recipe.instructions }}</p>
-          </li>
-        </ul>
-        <button>Close</button>
+            <p class="card-text">Instructions: {{ recipe.instructions }}</p>
+            <p> 
+              {{ recipe.nutrition && recipe.nutrition.nutrients[0].title }}: {{ recipe.nutrition && recipe.nutrition.nutrients[0].amount }} {{ recipe.nutrition && recipe.nutrition.nutrients[0].unit }}
+              {{ recipe.nutrition && recipe.nutrition.nutrients[1].title }}: {{ recipe.nutrition && recipe.nutrition.nutrients[1].amount }} {{ recipe.nutrition && recipe.nutrition.nutrients[1].unit }}
+              {{ recipe.nutrition && recipe.nutrition.nutrients[3].title }}: {{ recipe.nutrition && recipe.nutrition.nutrients[3].amount }} {{ recipe.nutrition && recipe.nutrition.nutrients[3].unit }}
+              {{ recipe.nutrition && recipe.nutrition.nutrients[5].title }}: {{ recipe.nutrition && recipe.nutrition.nutrients[5].amount }} {{ recipe.nutrition && recipe.nutrition.nutrients[5].unit }}
+              {{ recipe.nutrition && recipe.nutrition.nutrients[6].title }}: {{ recipe.nutrition && recipe.nutrition.nutrients[6].amount }} {{ recipe.nutrition && recipe.nutrition.nutrients[6].unit }}
+              {{ recipe.nutrition && recipe.nutrition.nutrients[7].title }}: {{ recipe.nutrition && recipe.nutrition.nutrients[7].amount }} {{ recipe.nutrition && recipe.nutrition.nutrients[7].unit }}
+              <!-- {{ recipe.nutrition && recipe.nutrition.nutrients[8].title }}: {{ recipe.nutrition && recipe.nutrition.nutrients[8].amount }} {{ recipe.nutrition && recipe.nutrition.nutrients[8].unit }} -->
+              <!-- {{ recipe.nutrition && recipe.nutrition.nutrients[9].title }}: {{ recipe.nutrition && recipe.nutrition.nutrients[9].amount }} {{ recipe.nutrition && recipe.nutrition.nutrients[9].unit }} -->
+            </p>
+          </div>
+        </div>  
+        <br>
+        <button class="btn btn-warning">Close</button>
       </form>
     </dialog>
   </div>
