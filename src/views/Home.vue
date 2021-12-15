@@ -56,16 +56,26 @@
             </div>
         </div>
     </section>      
-    <ul>
-      <li v-for="(value, key) in days">
-        <p><b>{{ key.charAt(0).toUpperCase() + key.slice(1) }}</b></p>
-        <p>Breakfast: {{ value.meals[0].title }}</p>
-        <p>Lunch: {{ value.meals[1].title }}</p>
-        <p>Dinner: {{ value.meals[2].title }}</p>
-        <button v-on:click="showRecipeInfo(value)">Show More Info</button>
-        <hr>
-      </li>
-    </ul>
+
+    <!-- Show Modal -->
+    <!-- <div id="show-modal" class="modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Modal body text goes here.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
     <dialog id="show-modal">
       <form method="dialog">
         <ul>
@@ -118,11 +128,6 @@ export default {
           console.log(response.data);
           this.days = response.data;
         })
-    },
-    showInfo: function(theMealPlan) {
-      console.log("in the show info function");
-      document.querySelector("#show-modal").showModal();
-      this.currentMealPlan = theMealPlan;
     },
     showRecipeInfo: function(theMealPlan) {
       console.log("in the recipe info function");
