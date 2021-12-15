@@ -60,30 +60,29 @@
     <dialog id="show-modal">
       <form method="dialog">
         <div class="card text-center" v-for="recipe in recipeInfo">
+          <img v-bind:src="recipe.image" alt="..." style="max-width: 500px; text-align:center">
           <div class="card-header">
             <strong>{{ recipe.title }}</strong>
           </div>
           <div class="card-body">
             <p class="card-text">
-              <table>
-                <th>
-                  Ingredients: 
-                </th>
-                <td v-for="product in recipe.extendedIngredients">
-                  {{ product.amount }} {{ product.unit }} of {{ product.name }}
-                </td>
-              </table>
+              <b>Ingredients: </b>
+              <span v-for="product in recipe.extendedIngredients">
+                {{ product.amount }} {{ product.unit }} of {{ product.name }}, 
+              </span>
             </p>
-            <p class="card-text">Instructions: {{ recipe.instructions }}</p>
-            <p> 
-              {{ recipe.nutrition && recipe.nutrition.nutrients[0].title }}: {{ recipe.nutrition && recipe.nutrition.nutrients[0].amount }} {{ recipe.nutrition && recipe.nutrition.nutrients[0].unit }}
-              {{ recipe.nutrition && recipe.nutrition.nutrients[1].title }}: {{ recipe.nutrition && recipe.nutrition.nutrients[1].amount }} {{ recipe.nutrition && recipe.nutrition.nutrients[1].unit }}
-              {{ recipe.nutrition && recipe.nutrition.nutrients[3].title }}: {{ recipe.nutrition && recipe.nutrition.nutrients[3].amount }} {{ recipe.nutrition && recipe.nutrition.nutrients[3].unit }}
-              {{ recipe.nutrition && recipe.nutrition.nutrients[5].title }}: {{ recipe.nutrition && recipe.nutrition.nutrients[5].amount }} {{ recipe.nutrition && recipe.nutrition.nutrients[5].unit }}
-              {{ recipe.nutrition && recipe.nutrition.nutrients[6].title }}: {{ recipe.nutrition && recipe.nutrition.nutrients[6].amount }} {{ recipe.nutrition && recipe.nutrition.nutrients[6].unit }}
-              {{ recipe.nutrition && recipe.nutrition.nutrients[7].title }}: {{ recipe.nutrition && recipe.nutrition.nutrients[7].amount }} {{ recipe.nutrition && recipe.nutrition.nutrients[7].unit }}
-              <!-- {{ recipe.nutrition && recipe.nutrition.nutrients[8].title }}: {{ recipe.nutrition && recipe.nutrition.nutrients[8].amount }} {{ recipe.nutrition && recipe.nutrition.nutrients[8].unit }} -->
-              <!-- {{ recipe.nutrition && recipe.nutrition.nutrients[9].title }}: {{ recipe.nutrition && recipe.nutrition.nutrients[9].amount }} {{ recipe.nutrition && recipe.nutrition.nutrients[9].unit }} -->
+            <p class="card-text">
+              <b>Prep Time:</b> {{ recipe.preparationMinutes }}, <b>Cook Time:</b> {{ recipe.cookingMinutes }}
+            </p>
+            <p class="card-text">
+              <b>Servings:</b> {{ recipe.servings }}, <b>Price Per Serving:</b> {{ recipe.pricePerServing }}
+            </p>
+            <p class="card-text"><strong>Instructions:</strong> {{ recipe.instructions }}</p>
+            <p class="card-text">
+              <b>Nutritional Facts: </b>
+              <span v-for="info,$index in recipe.nutrition.nutrients" v-if="$index !== 2 && $index !== 4 && $index < 10">
+                {{ info.title }}: {{ info.amount }}{{ info.unit }}, 
+              </span>
             </p>
           </div>
         </div>  
@@ -93,6 +92,11 @@
     </dialog>
   </div>
 </template>
+
+<p>Prep Time: {{ meal.preparationMinutes }}</p>
+<p>Cook Time: {{ meal.cookingMinutes }}</p>
+<p>Servings: {{ meal.servings }}</p>
+<p>Price Per Serving: {{ meal.pricePerServing }}</p>
 
 <script>
 import axios from 'axios'
@@ -124,6 +128,7 @@ export default {
           console.log(response.data);
           this.days = response.data;
         })
+      // console.log("getting recipe info to display with the mealplan"); // planning on sending recipe info to get the image and display it with the mealplans
     },
     showRecipeInfo: function(theMealPlan) {
       console.log("in the recipe info function");

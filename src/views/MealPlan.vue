@@ -10,7 +10,7 @@
     <!-- {{ mealData }} -->
     <ul>
       <li v-for="meal in allMeals">
-        <p><strong>Title: {{ meal["title"] }}</strong></p>
+        <p><strong>Title: {{ meal.title }}</strong></p>
         <img v-bind:src="meal.image">
         <p>Prep Time: {{ meal.preparationMinutes }}</p>
         <p>Cook Time: {{ meal.cookingMinutes }}</p>
