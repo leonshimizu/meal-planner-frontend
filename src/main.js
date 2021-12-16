@@ -8,6 +8,12 @@ Vue.config.productionTip = false
 axios.defaults.baseURL =
   process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://your-backend-app-name.herokuapp.com";
 
+var jwt = localStorage.getItem("jwt");
+if (jwt) {
+  axios.defaults.headers.common["Authorization"] = "Bearer " + jwt;
+}
+
+
 new Vue({
   router,
   render: h => h(App)
