@@ -27,7 +27,7 @@
                             <div class="text-center">
                                 <!-- Product name-->
                                 <h5 class="fw-bolder">{{ meal.title }}</h5>
-                                <!-- Product price-->
+                                <!-- Product Info-->
                                 <p>Prep Time: {{ meal.preparationMinutes }}</p>
                                 <p>Cook Time: {{ meal.cookingMinutes }}</p>
                                 <p>Servings: {{ meal.servings }}</p>

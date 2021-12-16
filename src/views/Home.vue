@@ -32,10 +32,16 @@
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                <div class="col mb-5" v-for="(value, key) in days">
+                <div class="col mb-5" v-for="(value, key, $index) in days">
                     <div class="card h-100">
                         <!-- Product image-->
-                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                        <img class="card-img-top" src="https://thestayathomechef.com/wp-content/uploads/2019/01/Pot-Roast-1.jpg" style="height:300px" v-if="$index == 0" />
+                        <img class="card-img-top" src="https://www.jocooks.com/wp-content/uploads/2019/10/coconut-chicken-curry-1-10.jpg" style="height:300px"  v-if="$index == 1" />
+                        <img class="card-img-top" src="https://therecipecritic.com/wp-content/uploads/2021/07/streettacos-500x500.jpg" style="height:300px"  v-if="$index == 2" />
+                        <img class="card-img-top" src="https://www.budgetbytes.com/wp-content/uploads/2013/07/Creamy-Tomato-Spinach-Pasta-close.jpg" style="height:300px"  v-if="$index == 3" />
+                        <img class="card-img-top" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/heart-healthy-food-1580231690.jpg" style="height:300px"  v-if="$index == 4" />
+                        <img class="card-img-top" src="https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_4:3/k%2Farchive%2F2816f86937ebc7019a513d858cec8e0c55d38890" style="height:300px"  v-if="$index == 5" />
+                        <img class="card-img-top" src="https://www.unicornsinthekitchen.com/wp-content/uploads/2019/11/Pan-seared-salmon.jpg" style="height:300px"  v-if="$index == 6" />
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">
@@ -71,7 +77,7 @@
                 {{ product.amount }} {{ product.unit }} of {{ product.name }}, 
               </span>
             </p>
-            <p class="card-text">
+            <p class="card-text" v-if="recipe.preparationMinutes !== null || recipe.cookingMinutes !== null">
               <b>Prep Time:</b> {{ recipe.preparationMinutes }}, <b>Cook Time:</b> {{ recipe.cookingMinutes }}
             </p>
             <p class="card-text">
