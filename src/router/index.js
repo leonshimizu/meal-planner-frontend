@@ -3,9 +3,9 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Recipes from '../views/Recipes.vue'
 import MealPlan from '../views/MealPlan.vue'
-import Signup from '../views/Signup.vue'
 import Login from '../views/Login.vue'
-import Logout from '../views/Login.vue'
+import Logout from '../views/Logout.vue'
+import Signup from '../views/Signup.vue'
 
 Vue.use(VueRouter)
 
@@ -34,11 +34,6 @@ const routes = [
     component: MealPlan
   },
   {
-    path: '/signup',
-    name: 'signup',
-    compnonent: Signup
-  },
-  {
     path: '/login',
     name: 'login',
     component: Login
@@ -47,6 +42,11 @@ const routes = [
     path: '/logout',
     name: 'logout',
     component: Logout
+  },
+  {
+    path: '/signup',
+    name: 'signup',
+    component: Signup
   }
 ]
 
