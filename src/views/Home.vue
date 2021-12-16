@@ -130,7 +130,6 @@ export default {
   methods: {
     createMealPlan: function() {
       console.log("in the index/create meal plan function");
-      // words with spaces do not work - have to input without spaces
       axios
         .get(`/meal_plans_generate?diet=${this.diet}&calories=${this.calories}&allergies=${this.allergies}`)
         .then(response => {
@@ -163,7 +162,6 @@ export default {
           console.log(response.data);
           this.mealPlan = response.data;
         })
-      // console.log(this.days);
       axios 
         .post('/meals', this.days)
         .then(response => {

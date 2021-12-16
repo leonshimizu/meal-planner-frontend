@@ -106,7 +106,7 @@
         currentMeal: {},
         info: {
           nutrition: {
-            nutrients: [0, 1, 3, 5, 6, 7, 8, 9]
+            nutrients: []
           }
         },
         mealData: {}
@@ -145,7 +145,6 @@
         console.log("in the extra info function");
         document.querySelector("#extra-modal").showModal();
         this.currentMeal = theMeal;
-        // console.log(this.currentMeal.id);
         axios 
           .get(`/extra_info?meal_id=${this.currentMeal.id}`)
           .then(response => {

@@ -1,6 +1,6 @@
 <template>
   <div class="signup">
-    <form v-on:submit.prevent="submit()"> <!-- if they click submit - run submit -->
+    <form v-on:submit.prevent="submit()">
       <h1>Signup</h1>
       <ul>
         <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
@@ -46,7 +46,7 @@
           .post("/users", this.newUserParams)
           .then((response) => {
             console.log(response.data);
-            this.$router.push("/login"); // goes to login page
+            this.$router.push("/login");
           })
           .catch((error) => {
             this.errors = error.response.data.errors;
