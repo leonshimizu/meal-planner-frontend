@@ -78,7 +78,7 @@
                       <p class="card-text">
                       <b>Ingredients: </b>
                       <span v-for="product in recipe.extendedIngredients">
-                        {{ product.amount }} {{ product.unit }} of {{ product.name }}, 
+                        {{ product.amount.toFixed(2) }} {{ product.unit }} of {{ product.name }}, 
                       </span>
                       </p>
                       <p class="card-text" v-if="recipe.preparationMinutes !== null || recipe.cookingMinutes !== null">
