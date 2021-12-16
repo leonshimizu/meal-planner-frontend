@@ -65,35 +65,43 @@
     <!-- Show Modal -->
     <dialog id="show-modal">
       <form method="dialog">
-        <div class="card text-center" v-for="recipe in recipeInfo">
-          <img v-bind:src="recipe.image" alt="..." style="max-width: 500px; text-align:center">
-          <div class="card-header">
-            <strong>{{ recipe.title }}</strong>
-          </div>
-          <div class="card-body">
-            <p class="card-text">
-              <b>Ingredients: </b>
-              <span v-for="product in recipe.extendedIngredients">
-                {{ product.amount }} {{ product.unit }} of {{ product.name }}, 
-              </span>
-            </p>
-            <p class="card-text" v-if="recipe.preparationMinutes !== null || recipe.cookingMinutes !== null">
-              <b>Prep Time:</b> {{ recipe.preparationMinutes }} minutes, <b>Cook Time:</b> {{ recipe.cookingMinutes }} minutes
-            </p>
-            <p class="card-text">
-              <b>Servings:</b> {{ recipe.servings }}, <b>Price Per Serving:</b> ${{ recipe.pricePerServing }}
-            </p>
-            <p class="card-text"><strong>Instructions:</strong> {{ recipe.instructions }}</p>
-            <p class="card-text">
-              <b>Nutritional Facts: </b>
-              <span v-for="info,$index in recipe.nutrition.nutrients" v-if="$index !== 2 && $index !== 4 && $index < 10">
-                {{ info.title }}: {{ info.amount }}{{ info.unit }}, 
-              </span>
-            </p>
-          </div>
-        </div>  
-        <br>
-        <button class="btn btn-warning">Close</button>
+        <div class="container px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-3 justify-content-center">
+              <div class="col mb-5" v-for="recipe in recipeInfo">
+                <div class="card h-100">
+                  <img v-bind:src="recipe.image" alt="..." style="max-width: 500px; text-align:center">
+                  <div class="card-header">
+                    <strong>{{ recipe.title }}</strong>
+                  </div>
+                  <div class="card-body p-3">
+                    <div class="text-center">
+                      <p class="card-text">
+                      <b>Ingredients: </b>
+                      <span v-for="product in recipe.extendedIngredients">
+                        {{ product.amount }} {{ product.unit }} of {{ product.name }}, 
+                      </span>
+                      </p>
+                      <p class="card-text" v-if="recipe.preparationMinutes !== null || recipe.cookingMinutes !== null">
+                        <b>Prep Time:</b> {{ recipe.preparationMinutes }} minutes, <b>Cook Time:</b> {{ recipe.cookingMinutes }} minutes
+                      </p>
+                      <p class="card-text">
+                        <b>Servings:</b> {{ recipe.servings }}, <b>Price Per Serving:</b> ${{ recipe.pricePerServing }}
+                      </p>
+                      <p class="card-text"><strong>Instructions:</strong> {{ recipe.instructions }}</p>
+                      <p class="card-text">
+                        <b>Nutritional Facts: </b>
+                        <span v-for="info,$index in recipe.nutrition.nutrients" v-if="$index !== 2 && $index !== 4 && $index < 10">
+                          {{ info.title }}: {{ info.amount }}{{ info.unit }}, 
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>  
+              <br>
+              <button class="btn btn-warning">Close</button>
+            </div>
+        </div>
       </form>
     </dialog>
   </div>
