@@ -45,31 +45,30 @@
     </section>  
 
     <!-- Extra Modal -->
-    <!-- <dialog id="extra-modal">
+    <dialog id="extra-modal">
       <form method="dialog">
         <div class="card text-center">
-          <img v-bind:src="recipe.image" alt="..." style="max-width: 500px; text-align:center">
           <div class="card-header">
-            <strong>{{ info }}</strong>
+            <strong>{{ info.title }}</strong>
           </div>
           <div class="card-body">
             <p class="card-text">
               <b>Ingredients: </b>
-              <span v-for="product in recipe.extendedIngredients">
+              <span v-for="product in info.extendedIngredients">
                 {{ product.amount }} {{ product.unit }} of {{ product.name }}, 
               </span>
             </p>
-            <p class="card-text">
-              <b>Prep Time:</b> {{ recipe.preparationMinutes }}, <b>Cook Time:</b> {{ recipe.cookingMinutes }}
+            <p class="card-text" v-if="info.preparationMinutes !== null"> <!-- Still need to make it display N/A or not display anything if there isn't a value -->
+              <b>Prep Time:</b> {{ info.preparationMinutes }}, <b>Cook Time:</b> {{ info.cookingMinutes }}
             </p>
             <p class="card-text">
-              <b>Servings:</b> {{ recipe.servings }}, <b>Price Per Serving:</b> {{ recipe.pricePerServing }}
+              <b>Servings:</b> {{ info.servings }}, <b>Price Per Serving:</b> {{ info.pricePerServing }}
             </p>
-            <p class="card-text"><strong>Instructions:</strong> {{ recipe.instructions }}</p>
+            <p class="card-text"><strong>Instructions:</strong> {{ info.instructions }}</p>
             <p class="card-text">
               <b>Nutritional Facts: </b>
-              <span v-for="info,$index in recipe.nutrition.nutrients" v-if="$index !== 2 && $index !== 4 && $index < 10">
-                {{ info.title }}: {{ info.amount }}{{ info.unit }}, 
+              <span v-for="nutrition,$index in info.nutrition.nutrients" v-if="$index !== 2 && $index !== 4 && $index < 10">
+                {{ nutrition.title }}: {{ nutrition.amount }}{{ nutrition.unit }}, 
               </span>
             </p>
           </div>
@@ -77,28 +76,7 @@
         <br>
         <button class="btn btn-warning">Close</button>
       </form>
-    </dialog> -->
-<!-- 
-    <dialog id="extra-modal">
-      <form method="dialog">
-        <p>Instructions: {{ info.instructions }}</p>
-        <p>Ingredients:</p>
-        <p v-for="ingredient in info.extendedIngredients">
-          {{ ingredient.amount }} {{ ingredient.unit }} of {{ ingredient.name }},
-        </p>
-        <p> 
-          {{ info.nutrition && info.nutrition.nutrients[0].title }}: {{ info.nutrition && info.nutrition.nutrients[0].amount }} {{ info.nutrition && info.nutrition.nutrients[0].unit }}
-          {{ info.nutrition && info.nutrition.nutrients[1].title }}: {{ info.nutrition && info.nutrition.nutrients[1].amount }} {{ info.nutrition && info.nutrition.nutrients[1].unit }}
-          {{ info.nutrition && info.nutrition.nutrients[3].title }}: {{ info.nutrition && info.nutrition.nutrients[3].amount }} {{ info.nutrition && info.nutrition.nutrients[3].unit }}
-          {{ info.nutrition && info.nutrition.nutrients[5].title }}: {{ info.nutrition && info.nutrition.nutrients[5].amount }} {{ info.nutrition && info.nutrition.nutrients[5].unit }}
-          {{ info.nutrition && info.nutrition.nutrients[6].title }}: {{ info.nutrition && info.nutrition.nutrients[6].amount }} {{ info.nutrition && info.nutrition.nutrients[6].unit }}
-          {{ info.nutrition && info.nutrition.nutrients[7].title }}: {{ info.nutrition && info.nutrition.nutrients[7].amount }} {{ info.nutrition && info.nutrition.nutrients[7].unit }}
-          {{ info.nutrition && info.nutrition.nutrients[8].title }}: {{ info.nutrition && info.nutrition.nutrients[8].amount }} {{ info.nutrition && info.nutrition.nutrients[8].unit }}
-          {{ info.nutrition && info.nutrition.nutrients[9].title }}: {{ info.nutrition && info.nutrition.nutrients[9].amount }} {{ info.nutrition && info.nutrition.nutrients[9].unit }}
-        </p>
-        <button>Close</button>
-      </form>
-    </dialog> -->
+    </dialog>
   </div>
 </template>
 
