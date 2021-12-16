@@ -14,6 +14,8 @@
       </div>
     </header>
 
+    <content-loader></content-loader>
+
     <!-- Section-->
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
@@ -84,7 +86,11 @@
 
 <script>
   import axios from 'axios'
+  import { ContentLoader } from 'vue-content-loader'
   export default {
+    components: {
+      ContentLoader
+    },
     data: function () {
       return {
         message: "Your Meal Plan!",
@@ -103,7 +109,6 @@
           }
         },
         mealData: {}
-        // nutrition: [0, 1, 3, 5, 6, 7, 8, 9] // array to make loop for nutrional data
       };
     },
     created: function () {
@@ -150,13 +155,3 @@
     },
   };
 </script>
-    <!-- <ul>
-      <li v-for="(value, key) in days">
-        <p><b>{{ key.charAt(0).toUpperCase() + key.slice(1) }}</b></p>
-        <p>Breakfast: {{ value.meals[0].title }}</p>
-        <p>Lunch: {{ value.meals[1].title }}</p>
-        <p>Dinner: {{ value.meals[2].title }}</p>
-        <button v-on:click="showRecipeInfo(value)">Show More Info</button>
-        <hr>
-      </li>
-    </ul> -->
