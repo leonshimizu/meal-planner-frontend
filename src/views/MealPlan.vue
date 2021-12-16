@@ -14,20 +14,21 @@
       </div>
     </header>
 
-    <content-loader></content-loader>
+    <!-- <content-loader></content-loader> Not working properly yet-->
 
     <!-- Section-->
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-3 justify-content-center">
-                <div class="col mb-5" v-for="meal in allMeals">
+                <div class="col mb-5" v-for="meal,$index in allMeals">
                     <div class="card h-100">
                         <!-- Product image-->
                         <img v-bind:src="meal.image" class="card-img-top" alt="..." style="max-width: 500px; text-align:center">
                         <!-- Product details-->
                         <div class="card-body p-3">
                             <div class="text-center">
-                                <!-- Product name-->
+                                <!-- Product name key.charAt(0).toUpperCase() + key.slice(1)-->
+                                <h5 class="fw-bolder">{{ mealData[$index].day_of_week.charAt(0).toUpperCase() + mealData[$index].day_of_week.slice(1) }} - {{ mealData[$index].meal_type.charAt(0).toUpperCase() + mealData[$index].meal_type.slice(1) }}</h5>
                                 <h5 class="fw-bolder">{{ meal.title }}</h5>
                                 <!-- Product Info-->
                                 <p>Prep Time: {{ meal.preparationMinutes }} minutes</p>
@@ -137,7 +138,7 @@
           .get('/meals')
           .then(response => {
             console.log(response.data);
-            this.mealData = response.data;
+            this.mealData = response.data; // need to pull day of week out of here and display with meals 
           })
       },
       extraInfo: function(theMeal) {
