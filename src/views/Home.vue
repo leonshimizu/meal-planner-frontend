@@ -78,10 +78,10 @@
               </span>
             </p>
             <p class="card-text" v-if="recipe.preparationMinutes !== null || recipe.cookingMinutes !== null">
-              <b>Prep Time:</b> {{ recipe.preparationMinutes }}, <b>Cook Time:</b> {{ recipe.cookingMinutes }}
+              <b>Prep Time:</b> {{ recipe.preparationMinutes }} minutes, <b>Cook Time:</b> {{ recipe.cookingMinutes }} minutes
             </p>
             <p class="card-text">
-              <b>Servings:</b> {{ recipe.servings }}, <b>Price Per Serving:</b> {{ recipe.pricePerServing }}
+              <b>Servings:</b> {{ recipe.servings }}, <b>Price Per Serving:</b> ${{ recipe.pricePerServing }}
             </p>
             <p class="card-text"><strong>Instructions:</strong> {{ recipe.instructions }}</p>
             <p class="card-text">

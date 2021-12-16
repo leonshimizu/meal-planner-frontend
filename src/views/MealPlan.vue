@@ -28,10 +28,10 @@
                                 <!-- Product name-->
                                 <h5 class="fw-bolder">{{ meal.title }}</h5>
                                 <!-- Product Info-->
-                                <p>Prep Time: {{ meal.preparationMinutes }}</p>
-                                <p>Cook Time: {{ meal.cookingMinutes }}</p>
+                                <p>Prep Time: {{ meal.preparationMinutes }} minutes</p>
+                                <p>Cook Time: {{ meal.cookingMinutes }} minutes</p>
                                 <p>Servings: {{ meal.servings }}</p>
-                                <p>Price Per Serving: {{ meal.pricePerServing }}</p>
+                                <p>Price Per Serving: ${{ meal.pricePerServing }}</p>
                                 <button type="button" class="btn btn-primary" v-on:click="extraInfo(meal)">Show More Info</button>
                             </div>
                         </div>
@@ -54,15 +54,15 @@
           <div class="card-body">
             <p class="card-text">
               <b>Ingredients: </b>
-              <span v-for="product in info.extendedIngredients">
+              <span v-for="product in info.extendedIngredients"> <!-- Shows too many decimal places -->
                 {{ product.amount }} {{ product.unit }} of {{ product.name }}, 
               </span>
             </p>
             <p class="card-text" v-if="info.preparationMinutes !== null"> <!-- Still need to make it display N/A or not display anything if there isn't a value -->
-              <b>Prep Time:</b> {{ info.preparationMinutes }}, <b>Cook Time:</b> {{ info.cookingMinutes }}
+              <b>Prep Time:</b> {{ info.preparationMinutes }} minutes, <b>Cook Time:</b> {{ info.cookingMinutes }} minutes
             </p>
             <p class="card-text">
-              <b>Servings:</b> {{ info.servings }}, <b>Price Per Serving:</b> {{ info.pricePerServing }}
+              <b>Servings:</b> {{ info.servings }}, <b>Price Per Serving:</b> ${{ info.pricePerServing }}
             </p>
             <p class="card-text"><strong>Instructions:</strong> {{ info.instructions }}</p>
             <p class="card-text">
