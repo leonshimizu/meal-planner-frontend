@@ -37,34 +37,13 @@
                 <div class="col mb-5" v-for="(value, key, $index) in days">
                     <div class="card h-100">
                         <!-- Product images -->
-                        <!-- <img class="card-img-top" src="https://thestayathomechef.com/wp-content/uploads/2019/01/Pot-Roast-1.jpg" style="height:300px" v-if="$index == 0" />
-                        <img class="card-img-top" src="https://www.jocooks.com/wp-content/uploads/2019/10/coconut-chicken-curry-1-10.jpg" style="height:300px"  v-if="$index == 1" />
-                        <img class="card-img-top" src="https://therecipecritic.com/wp-content/uploads/2021/07/streettacos-500x500.jpg" style="height:300px"  v-if="$index == 2" />
-                        <img class="card-img-top" src="https://www.budgetbytes.com/wp-content/uploads/2013/07/Creamy-Tomato-Spinach-Pasta-close.jpg" style="height:300px"  v-if="$index == 3" />
-                        <img class="card-img-top" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/heart-healthy-food-1580231690.jpg" style="height:300px"  v-if="$index == 4" />
+                        <img class="card-img-top" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/full-frame-shot-of-food-for-sale-at-market-stall-royalty-free-image-971852470-1559754603.jpg?crop=0.674xw:1.00xh;0,0&resize=480:*" style="height:300px" v-if="$index == 0" />
+                        <img class="card-img-top" src="https://www.unicornsinthekitchen.com/wp-content/uploads/2019/11/Pan-seared-salmon.jpg" style="height:300px"  v-if="$index == 1" />
+                        <img class="card-img-top" src="https://www.budgetbytes.com/wp-content/uploads/2013/07/Creamy-Tomato-Spinach-Pasta-close.jpg" style="height:300px"  v-if="$index == 2" />
+                        <img class="card-img-top" src="https://therecipecritic.com/wp-content/uploads/2021/07/streettacos-500x500.jpg" style="height:300px"  v-if="$index == 3" />
+                        <img class="card-img-top" src="https://www.jocooks.com/wp-content/uploads/2019/10/coconut-chicken-curry-1-10.jpg" style="height:300px"  v-if="$index == 4" />
                         <img class="card-img-top" src="https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_4:3/k%2Farchive%2F2816f86937ebc7019a513d858cec8e0c55d38890" style="height:300px"  v-if="$index == 5" />
-                        <img class="card-img-top" src="https://www.unicornsinthekitchen.com/wp-content/uploads/2019/11/Pan-seared-salmon.jpg" style="height:300px"  v-if="$index == 6" /> -->
-                        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                          <div class="carousel-inner">
-                            <div class="carousel-item active">
-                              <img src="https://thestayathomechef.com/wp-content/uploads/2019/01/Pot-Roast-1.jpg" class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                              <img src="https://www.jocooks.com/wp-content/uploads/2019/10/coconut-chicken-curry-1-10.jpg" class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                              <img src="https://therecipecritic.com/wp-content/uploads/2021/07/streettacos-500x500.jpg" class="d-block w-100" alt="...">
-                            </div>
-                          </div>
-                          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                          </button>
-                          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                          </button>
-                        </div>
+                        <img class="card-img-top" src=" https://thestayathomechef.com/wp-content/uploads/2019/01/Pot-Roast-1.jpg" style="height:300px"  v-if="$index == 6" />
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">
@@ -201,3 +180,25 @@ export default {
   }
 }
 </script>
+
+<!-- <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel"> CAROUSEL - doesn't loop properly
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://thestayathomechef.com/wp-content/uploads/2019/01/Pot-Roast-1.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://www.jocooks.com/wp-content/uploads/2019/10/coconut-chicken-curry-1-10.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://therecipecritic.com/wp-content/uploads/2021/07/streettacos-500x500.jpg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div> -->
