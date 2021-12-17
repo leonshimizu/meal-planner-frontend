@@ -4,7 +4,8 @@
     <header class="bg-dark py-5">
         <div class="container px-4 px-lg-5 my-5">
             <div class="text-center text-white">
-                <h1 class="display-4 fw-bolder">Welcome to the Meal Plan Generator!</h1>
+                <h1 class="display-4 fw-bolder" v-if="user !== null">Welcome {{ user.name}}, to your Meal Plan Generator!</h1>
+                <h1 class="display-4 fw-bolder" v-if="user === null">Welcome to the Meal Plan Generator!</h1>
                 <p class="lead fw-normal text-white-50 mb-0">Please select from the following diets:</p>
                 <p class="fw-normal text-white-50 mb-0">Diets: Gluten Free, Ketogenic, Vegetarian, Lacto-Vegetarian, Ovo-Vegetarian, Vegan, Pescetarian, Paleo, Primal, low FODMAP, or Whole30 (for more infomation, visit <a href="https://spoonacular.com/food-api/docs#Diets">Diets)</a></p>
                 <p class="fw-normal text-white-50 mb-0">Please, input your filters of choice:</p>
@@ -24,7 +25,7 @@
                 <button type="button" class="btn btn-success" v-on:click="createMealPlan()">Generate Meal Plan</button>
                 <br>
                 <br>
-                <button type="button" class="btn btn-success" v-on:click="saveMealPlan()">Save Meal Plan</button>
+                <button type="button" class="btn btn-success" v-on:click="saveMealPlan()" v-if="user !== null">Save Meal Plan</button>
             </div>
         </div>
     </header>
@@ -116,12 +117,13 @@ export default {
     return {
       welcomeMessage: "Welcome to the Meal Plan Generator!",
       days: [],
-      diet: "GlutenFree",
+      diet: "Gluten Free",
       calories: "1200",
       allergies: "Peanut",
       currentMealPlan: {},
       recipeInfo: {},
       mealPlan: {},
+      user: {}
     }
   },
   created: function() {
@@ -135,6 +137,12 @@ export default {
         .then(response => {
           console.log(response.data);
           this.days = response.data;
+        })
+      axios
+        .get('/current_user')
+        .then(response => {
+          console.log(response.data);
+          this.user = response.data;
         })
       // console.log("getting recipe info to display with the mealplan"); // planning on sending recipe info to get the image and display it with the mealplans
     },

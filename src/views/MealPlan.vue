@@ -1,15 +1,22 @@
 <template>
   <!-- Header-->
   <div class="mealPlan">
-    <header class="bg-dark py-5">
+    <header class="bg-dark py-5" v-if="user !== null">
       <div class="container px-4 px-lg-5 my-5">
           <div class="text-center text-white">
-              <h1 class="display-4 fw-bolder">{{ message }}</h1>
+              <h1 class="display-4 fw-bolder">{{ user.name }}'s Meal Plan:</h1>
               <p class="lead fw-normal text-white-50 mb-0">Diet: {{ meal_plan[0].diet }}</p>
               <p class="lead fw-normal text-white-50 mb-0">Allergies: {{ meal_plan[0].allergies }}</p>
               <p class="lead fw-normal text-white-50 mb-0">Time Frame: {{ meal_plan[0].timeFrame }}</p>
               <p class="lead fw-normal text-white-50 mb-0">Calories: {{ meal_plan[0].calories }}</p>
               <p class="lead fw-normal text-white-50 mb-0">Created: {{ meal_plan[0].created_at }}</p>
+          </div>
+      </div>
+    </header>
+    <header class="bg-dark py-5" v-if="user == null">
+      <div class="container px-4 px-lg-5 my-5">
+          <div class="text-center text-white">
+              <h1 class="display-4 fw-bolder">Please create an account to view your personal meal plan. Thank you!</h1>
           </div>
       </div>
     </header>
@@ -109,7 +116,8 @@
             nutrients: []
           }
         },
-        mealData: {}
+        mealData: {},
+        user: {}
       };
     },
     created: function () {
@@ -124,6 +132,12 @@
           .then(response => {
             console.log(response.data);
             this.meal_plan = response.data;
+          })
+        axios
+          .get('/current_user')
+          .then(response => {
+            console.log(response.data);
+            this.user = response.data;
           })
       },
       recipeShow: function() { 
