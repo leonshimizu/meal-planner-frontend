@@ -20,9 +20,6 @@
           </div>
       </div>
     </header>
-
-    <!-- <content-loader></content-loader> Not working properly yet-->
-
     <!-- Section-->
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
@@ -53,7 +50,6 @@
             </div>
         </div>
     </section>  
-
     <!-- Extra Modal -->
     <dialog id="extra-modal">
       <form method="dialog">
@@ -94,14 +90,9 @@
 
 <script>
   import axios from 'axios'
-  import { ContentLoader } from 'vue-content-loader'
   export default {
-    components: {
-      ContentLoader
-    },
     data: function () {
       return {
-        message: "Your Meal Plan!",
         meal_plan: {
           diet: [],
           allergies: [],
