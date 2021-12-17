@@ -8,13 +8,13 @@
             <ul>
               <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
             </ul>
-            <div>
-              <label class="lead fw-normal text-white-50 mb-0">Email:</label>
-              <input type="email" v-model="newSessionParams.email" />
+            <div class="input-group input-group-sm mb-3">
+              <span class="input-group-text" id="inputGroup-sizing-sm">Email:</span>
+              <input type="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" v-model="newSessionParams.email">
             </div>
-            <div>
-              <label class="lead fw-normal text-white-50 mb-0">Password:</label>
-              <input type="password" v-model="newSessionParams.password" />
+            <div class="input-group input-group-sm mb-3">
+              <span class="input-group-text" id="inputGroup-sizing-sm">Password:</span>
+              <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" v-model="newSessionParams.password">
             </div>
             <input type="submit" value="Submit" />
           </form>

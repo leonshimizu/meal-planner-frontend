@@ -8,21 +8,23 @@
             <ul>
               <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
             </ul>
-            <div>
-              <label class="lead fw-normal text-white-50 mb-0">Name:</label>
-              <input type="text" v-model="newUserParams.name" /> <small v-if="newUserParams.name.length > 0 && newUserParams.name.length <= 20">{{ newUserParams.name.length }}</small> <small v-if="newUserParams.name.length > 20" class="text-danger">Name is too long</small>
+            <div class="input-group input-group-sm mb-3">
+              <span class="input-group-text" id="inputGroup-sizing-sm">Name:</span>
+              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" v-model="newUserParams.name">
+              <small v-if="newUserParams.name.length > 0 && newUserParams.name.length <= 20">{{ newUserParams.name.length }}</small> <small v-if="newUserParams.name.length > 20" class="text-danger">Name is too long</small>
             </div>
-            <div>
-              <label class="lead fw-normal text-white-50 mb-0">Email:</label>
-              <input type="email" v-model="newUserParams.email" />
+            <div class="input-group input-group-sm mb-3">
+              <span class="input-group-text" id="inputGroup-sizing-sm">Email:</span>
+              <input type="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" v-model="newUserParams.email">
             </div>
-            <div>
-              <label class="lead fw-normal text-white-50 mb-0">Password:</label>
-              <input type="password" v-model="newUserParams.password" />
+            <div class="input-group input-group-sm mb-3">
+              <span class="input-group-text" id="inputGroup-sizing-sm">Password:</span>
+              <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" v-model="newUserParams.password" >
             </div>
-            <div>
-              <label class="lead fw-normal text-white-50 mb-0">Password confirmation:</label>
-              <input type="password" v-model="newUserParams.password_confirmation" /><small v-if="newUserParams.password !== newUserParams.password_confirmation" class="text-danger">Passwords must match</small>
+            <div class="input-group input-group-sm mb-3">
+              <span class="input-group-text" id="inputGroup-sizing-sm">Password Confirmation:</span>
+              <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" v-model="newUserParams.password_confirmation">
+              <small v-if="newUserParams.password !== newUserParams.password_confirmation" class="text-danger">Passwords must match</small>
             </div>
             <input type="submit" value="Submit" />
           </form>

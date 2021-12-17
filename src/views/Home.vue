@@ -26,6 +26,7 @@
                 <br>
                 <br>
                 <button type="button" class="btn btn-success" v-on:click="saveMealPlan()" v-if="user !== null">Save Meal Plan</button>
+                <p class="fw-normal text-white-50 mb-0" v-if="user === null">To save this meal plan, please create an account and signin. Thank you!</p>
             </div>
         </div>
     </header>
@@ -52,7 +53,7 @@
                                 <p>Breakfast: {{ value.meals[0].title }}</p>
                                 <p>Lunch: {{ value.meals[1].title }}</p>
                                 <p>Dinner: {{ value.meals[2].title }}</p>
-                                <button type="button" class="btn btn-primary" v-on:click="showRecipeInfo(value)">Show More Info</button>
+                                <button type="button" class="btn btn-primary" v-on:click="showRecipeInfo(value)" v-if="user !== null">Show More Info</button>
                             </div>
                         </div>
                         <!-- Product actions-->
