@@ -44,13 +44,7 @@
                         <img class="card-img-top" src="" style="height:300px"  v-if="$index == 4" />
                         <img class="card-img-top" src="" style="height:300px"  v-if="$index == 5" />
                         <img class="card-img-top" src=""  v-if="$index == 6" /> -->
-                        <!-- <img class="card-img-top" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/full-frame-shot-of-food-for-sale-at-market-stall-royalty-free-image-971852470-1559754603.jpg?crop=0.674xw:1.00xh;0,0&resize=480:*" style="height:300px" v-if="$index == 0" />
-                        <img class="card-img-top" src="https://www.unicornsinthekitchen.com/wp-content/uploads/2019/11/Pan-seared-salmon.jpg" style="height:300px"  v-if="$index == 1" />
-                        <img class="card-img-top" src="https://www.budgetbytes.com/wp-content/uploads/2013/07/Creamy-Tomato-Spinach-Pasta-close.jpg" style="height:300px"  v-if="$index == 2" />
-                        <img class="card-img-top" src="https://therecipecritic.com/wp-content/uploads/2021/07/streettacos-500x500.jpg" style="height:300px"  v-if="$index == 3" />
-                        <img class="card-img-top" src="https://www.jocooks.com/wp-content/uploads/2019/10/coconut-chicken-curry-1-10.jpg" style="height:300px"  v-if="$index == 4" />
-                        <img class="card-img-top" src="https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_4:3/k%2Farchive%2F2816f86937ebc7019a513d858cec8e0c55d38890" style="height:300px"  v-if="$index == 5" />
-                        <img class="card-img-top" src=" https://thestayathomechef.com/wp-content/uploads/2019/01/Pot-Roast-1.jpg" style="height:300px"  v-if="$index == 6" /> -->
+
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">
@@ -140,34 +134,33 @@ export default {
   },
   methods: {
     createMealPlan: function() {
-      console.log("in the index/create meal plan function");
+      // console.log("in the index/create meal plan function");
       axios
         .get(`/meal_plans_generate?diet=${this.diet}&calories=${this.calories}&allergies=${this.allergies}`)
         .then(response => {
-          console.log(response.data);
+          // console.log(response.data);
           this.days = response.data;
         })
       axios
         .get('/current_user')
         .then(response => {
-          console.log(response.data);
+          // console.log(response.data);
           this.user = response.data;
         })
-      // console.log("getting recipe info to display with the mealplan"); // planning on sending recipe info to get the image and display it with the mealplans
     },
     showRecipeInfo: function(theMealPlan) {
-      console.log("in the recipe info function");
+      // console.log("in the recipe info function");
       document.querySelector("#show-modal").showModal();
       this.currentMealPlan = theMealPlan;
       axios
         .get(`/meals_generate?meal1=${this.currentMealPlan.meals[0].id}&meal2=${this.currentMealPlan.meals[1].id}&meal3=${this.currentMealPlan.meals[2].id}`)
         .then(response => {
-          console.log(response.data);
+          // console.log(response.data);
           this.recipeInfo = response.data;
         })
     },
     saveMealPlan: function() {
-      console.log("in the process of saving the meal plan");
+      // console.log("in the process of saving the meal plan");
       axios 
         .post(`/meal_plans`, {
           diet: this.diet,
@@ -176,20 +169,21 @@ export default {
           calories: this.calories
         })
         .then(response => {
-          console.log(response.data);
+          // console.log(response.data);
           this.mealPlan = response.data;
         })
       axios 
         .post('/meals', this.days)
         .then(response => {
-          console.log(response.data);
+          // console.log(response.data);
         })
     }
   }
 }
 </script>
 
-<!-- <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel"> CAROUSEL - doesn't loop properly
+<!-- CAROUSEL - doesn't loop properly
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img src="https://thestayathomechef.com/wp-content/uploads/2019/01/Pot-Roast-1.jpg" class="d-block w-100" alt="...">
