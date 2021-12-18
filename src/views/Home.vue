@@ -38,7 +38,7 @@
                 <div class="col mb-5" v-for="(value, key, $index) in days" v-if="$index < 7">
                     <div class="card h-100">
                         <!-- Product images -->
-                        <img class="card-img-top"height="556"v-bind:src="days.image_urls[$index]" style="height:300px" />                      
+                        <img class="card-img-top" v-bind:src="days.image_urls[$index]" />
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">                                
