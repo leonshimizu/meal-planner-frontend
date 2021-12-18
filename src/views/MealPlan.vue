@@ -38,7 +38,7 @@
                                 <p>Prep Time: {{ meal.preparationMinutes }} minutes</p>
                                 <p>Cook Time: {{ meal.cookingMinutes }} minutes</p>
                                 <p>Servings: {{ meal.servings }}</p>
-                                <p>Price Per Serving: ${{ meal.pricePerServing }}</p>
+                                <!-- <p>Price Per Serving: ${{ meal.pricePerServing }}</p> Price is wrong -->
                                 <button type="button" class="btn btn-primary" v-on:click="extraInfo(meal)">Show More Info</button>
                             </div>
                         </div>
