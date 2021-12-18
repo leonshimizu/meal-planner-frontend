@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+
     <!-- Header-->
     <header class="bg-dark py-5">
         <div class="container px-4 px-lg-5 my-5">
@@ -30,6 +31,7 @@
             </div>
         </div>
     </header>
+
     <!-- Section-->
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
@@ -37,73 +39,17 @@
                 <div class="col mb-5" v-for="(value, key, $index) in days" v-if="$index < 7">
                     <div class="card h-100">
                         <!-- Product images -->
-                        <!-- <img class="card-img-top" v-bind:src="days.image_urls[$index]" style="height:300px" /> -->
-                        <!-- Carousel -->
-                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                          <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                          </div>
-                          <div class="carousel-inner">
-                            <div class="carousel-item active"> 
-                              <!-- <img v-bind:src="days.image_urls[$index]" class="d-block w-100" v-if="$index < 1">
-                              <img v-bind:src="days.image_urls[$index + 1]" class="d-block w-100" v-if="$index < 1">
-                              <img v-bind:src="days.image_urls[$index + 2]" class="d-block w-100" v-if="$index < 1">
-                              <img v-bind:src="days.image_urls[$index + 3]" class="d-block w-100" v-if="$index >= 1">
-                              <img v-bind:src="days.image_urls[$index + 4]" class="d-block w-100" v-if="$index >= 1">
-                              <img v-bind:src="days.image_urls[$index + 5]" class="d-block w-100" v-if="$index >= 1"> -->
-                              <!-- Make loop that adds 3 every iteration of the loop to make it as dry as possible -->
-                              <img v-bind:src="days.image_urls[$index]" class="d-block w-100" alt="..." v-if="$index === 0">
-                              <img v-bind:src="days.image_urls[$index + 3]" class="d-block w-100" alt="..." v-if="$index === 1">
-                              <img v-bind:src="days.image_urls[$index + 6]" class="d-block w-100" alt="..." v-if="$index === 2">
-                              <img v-bind:src="days.image_urls[$index + 9]" class="d-block w-100" alt="..." v-if="$index === 3">
-                              <img v-bind:src="days.image_urls[$index + 12]" class="d-block w-100" alt="..." v-if="$index === 4">
-                              <img v-bind:src="days.image_urls[$index + 15]" class="d-block w-100" alt="..." v-if="$index === 5">
-                              <img v-bind:src="days.image_urls[$index + 18]" class="d-block w-100" alt="..." v-if="$index === 6">
-                            </div>
-                            <div class="carousel-item active">
-                              <img v-bind:src="days.image_urls[$index + 1]" class="d-block w-100" alt="..." v-if="$index === 0">
-                              <img v-bind:src="days.image_urls[$index + 4]" class="d-block w-100" alt="..." v-if="$index === 1">
-                              <img v-bind:src="days.image_urls[$index + 7]" class="d-block w-100" alt="..." v-if="$index === 2">
-                              <img v-bind:src="days.image_urls[$index + 10]" class="d-block w-100" alt="..." v-if="$index === 3">
-                              <img v-bind:src="days.image_urls[$index + 13]" class="d-block w-100" alt="..." v-if="$index === 4">
-                              <img v-bind:src="days.image_urls[$index + 16]" class="d-block w-100" alt="..." v-if="$index === 5">
-                              <img v-bind:src="days.image_urls[$index + 19]" class="d-block w-100" alt="..." v-if="$index === 6">
-                            </div>
-                            <div class="carousel-item active">
-                              <img v-bind:src="days.image_urls[$index + 2]" class="d-block w-100" alt="..." v-if="$index === 0">
-                              <img v-bind:src="days.image_urls[$index + 5]" class="d-block w-100" alt="..." v-if="$index === 1">
-                              <img v-bind:src="days.image_urls[$index + 8]" class="d-block w-100" alt="..." v-if="$index === 2">
-                              <img v-bind:src="days.image_urls[$index + 11]" class="d-block w-100" alt="..." v-if="$index === 3">
-                              <img v-bind:src="days.image_urls[$index + 14]" class="d-block w-100" alt="..." v-if="$index === 4">
-                              <img v-bind:src="days.image_urls[$index + 17]" class="d-block w-100" alt="..." v-if="$index === 5">
-                              <img v-bind:src="days.image_urls[$index + 20]" class="d-block w-100" alt="..." v-if="$index === 6">
-                            </div>
-                          </div>
-                          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
+                        <img class="card-img-top"height="556"v-bind:src="days.image_urls[$index]" style="height:300px" />                      
                         <!-- Product details-->
                         <div class="card-body p-4">
-                            <div class="text-center">
-                                <!-- Product name-->
+                            <div class="text-center">                                
                                 <h5 class="fw-bolder">{{ key.charAt(0).toUpperCase() + key.slice(1) }}</h5>
-                                <!-- Product price-->
-                                <!-- <p>{{ days.image_urls }}</p> -->
                                 <p>Breakfast: {{ value.meals[0].title }}</p>
                                 <p>Lunch: {{ value.meals[1].title }}</p>
                                 <p>Dinner: {{ value.meals[2].title }}</p>
                                 <button type="button" class="btn btn-primary" v-on:click="showRecipeInfo(value)" v-if="user !== null">Show More Info</button>
                             </div>
                         </div>
-                        <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                         </div>
                     </div>
@@ -111,6 +57,7 @@
             </div>
         </div>
     </section>      
+
     <!-- Show Modal -->
     <dialog id="show-modal">
       <form method="dialog">
@@ -153,6 +100,7 @@
         </div>
       </form>
     </dialog>
+
   </div>
 </template>
 
