@@ -5,7 +5,7 @@
         <div class="container px-4 px-lg-5 my-5">
             <div class="text-center text-white">
                 <h1 class="display-4 fw-bolder" v-if="user !== null">Welcome {{ user.name}}, to your Meal Plan Generator!</h1>
-                <h1 class="display-4 fw-bolder" v-if="user === null">Welcome to the Meal Plan Generator!</h1>
+                <h1 class="display-4 fw-bolder" v-if="user === null">Planning your meals just got easier!</h1>
                 <p class="lead fw-normal text-white-50 mb-0">Please select from the following diets:</p>
                 <p class="fw-normal text-white-50 mb-0">Diets: Gluten Free, Ketogenic, Vegetarian, Lacto-Vegetarian, Ovo-Vegetarian, Vegan, Pescetarian, Paleo, Primal, low FODMAP, or Whole30 (for more infomation, visit <a href="https://spoonacular.com/food-api/docs#Diets">Diets)</a></p>
                 <p class="fw-normal text-white-50 mb-0">Please, input your filters of choice:</p>
@@ -176,6 +176,12 @@ export default {
   },
   created: function() {
     // this.createMealPlan();
+    axios
+      .get('/current_user')
+      .then(response => {
+        console.log(response.data);
+        this.user = response.data;
+      })    
   },
   methods: {
     createMealPlan: function() {
