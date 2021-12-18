@@ -13,10 +13,10 @@
             <span class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Authentication</a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="/signup" v-if="user === null">Signup</a></li>
-                    <li v-if="user === null"><hr class="dropdown-divider" /></li>
-                    <li><a class="dropdown-item" href="/login" v-if="user === null">Login</a></li>
-                    <li><a class="dropdown-item" href="/logout" v-if="user !== null">Logout</a></li>
+                    <li><a class="dropdown-item" href="/signup">Signup</a></li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li><a class="dropdown-item" href="/login">Login</a></li>
+                    <li><a class="dropdown-item" href="/logout">Logout</a></li>
                 </ul>
             </span>
           </div>
@@ -33,24 +33,9 @@
   </div>
 </template>
 
-<script>
-    import axios from 'axios'
-    export default {
-        data: function() {
-            return {
-                user: {}
-            }
-        },
-        mounted: function() {
-            axios 
-                .get('/current_user')
-                .then(response => {
-                    console.log(response.data);
-                    this.user = response.data;
-                })
-        }
-    }
-</script>
+<style>
+
+</style>
 
 <!-- <li class="nav-item dropdown"> EXTRA DROP DOWN MENU
     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
