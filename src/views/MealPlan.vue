@@ -117,43 +117,43 @@
     },
     methods: {
       mealPlanShow: function() {
-        // console.log("in the mealPlan show");
+        console.log("in the mealPlan show");
         axios 
           .get('/meal_plans')
           .then(response => {
-            // console.log(response.data);
+            console.log(response.data);
             this.meal_plan = response.data;
           })
         axios
           .get('/current_user')
           .then(response => {
-            // console.log(response.data);
+            console.log(response.data);
             this.user = response.data;
           })
       },
       recipeShow: function() { 
-        // console.log("in the meals show");
+        console.log("in the meals show");
         axios 
           .get('/all_meals')
           .then(response => {
-            // console.log(response.data);
+            console.log(response.data);
             this.allMeals = response.data;
           })
         axios 
           .get('/meals')
           .then(response => {
-            // console.log(response.data);
+            console.log(response.data);
             this.mealData = response.data;
           })
       },
       extraInfo: function(theMeal) {
-        // console.log("in the extra info function");
+        console.log("in the extra info function");
         document.querySelector("#extra-modal").showModal();
         this.currentMeal = theMeal;
         axios 
           .get(`/extra_info?meal_id=${this.currentMeal.id}`)
           .then(response => {
-            // console.log(response.data);
+            console.log(response.data);
             this.info = response.data[0];
           })
       }

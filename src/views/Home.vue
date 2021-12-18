@@ -37,14 +37,54 @@
                 <div class="col mb-5" v-for="(value, key, $index) in days" v-if="$index < 7">
                     <div class="card h-100">
                         <!-- Product images -->
-                        <img class="card-img-top" v-bind:src="days.image_urls[$index]" style="height:300px" />
-                        <!-- <img class="card-img-top" src="" style="height:300px"  v-if="$index == 1" />
-                        <img class="card-img-top" src="" style="height:300px"  v-if="$index == 2" />
-                        <img class="card-img-top" src="" style="height:300px"  v-if="$index == 3" />
-                        <img class="card-img-top" src="" style="height:300px"  v-if="$index == 4" />
-                        <img class="card-img-top" src="" style="height:300px"  v-if="$index == 5" />
-                        <img class="card-img-top" src=""  v-if="$index == 6" /> -->
-
+                        <!-- <img class="card-img-top" v-bind:src="days.image_urls[$index]" style="height:300px" /> -->
+                        <!-- Carousel -->
+                        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                          <div class="carousel-inner">
+                            <div class="carousel-item active"> 
+                              <!-- <img v-bind:src="days.image_urls[$index]" class="d-block w-100" v-if="$index < 1">
+                              <img v-bind:src="days.image_urls[$index + 1]" class="d-block w-100" v-if="$index < 1">
+                              <img v-bind:src="days.image_urls[$index + 2]" class="d-block w-100" v-if="$index < 1">
+                              <img v-bind:src="days.image_urls[$index + 3]" class="d-block w-100" v-if="$index >= 1">
+                              <img v-bind:src="days.image_urls[$index + 4]" class="d-block w-100" v-if="$index >= 1">
+                              <img v-bind:src="days.image_urls[$index + 5]" class="d-block w-100" v-if="$index >= 1"> -->
+                              <!-- Make loop that adds 3 every iteration of the loop to make it as dry as possible -->
+                              <img v-bind:src="days.image_urls[$index]" class="d-block w-100" alt="..." v-if="$index === 0">
+                              <img v-bind:src="days.image_urls[$index + 3]" class="d-block w-100" alt="..." v-if="$index === 1">
+                              <img v-bind:src="days.image_urls[$index + 6]" class="d-block w-100" alt="..." v-if="$index === 2">
+                              <img v-bind:src="days.image_urls[$index + 9]" class="d-block w-100" alt="..." v-if="$index === 3">
+                              <img v-bind:src="days.image_urls[$index + 12]" class="d-block w-100" alt="..." v-if="$index === 4">
+                              <img v-bind:src="days.image_urls[$index + 15]" class="d-block w-100" alt="..." v-if="$index === 5">
+                              <img v-bind:src="days.image_urls[$index + 18]" class="d-block w-100" alt="..." v-if="$index === 6">
+                            </div>
+                            <div class="carousel-item active">
+                              <img v-bind:src="days.image_urls[$index + 1]" class="d-block w-100" alt="..." v-if="$index === 0">
+                              <img v-bind:src="days.image_urls[$index + 4]" class="d-block w-100" alt="..." v-if="$index === 1">
+                              <img v-bind:src="days.image_urls[$index + 7]" class="d-block w-100" alt="..." v-if="$index === 2">
+                              <img v-bind:src="days.image_urls[$index + 10]" class="d-block w-100" alt="..." v-if="$index === 3">
+                              <img v-bind:src="days.image_urls[$index + 13]" class="d-block w-100" alt="..." v-if="$index === 4">
+                              <img v-bind:src="days.image_urls[$index + 16]" class="d-block w-100" alt="..." v-if="$index === 5">
+                              <img v-bind:src="days.image_urls[$index + 19]" class="d-block w-100" alt="..." v-if="$index === 6">
+                            </div>
+                            <div class="carousel-item active">
+                              <img v-bind:src="days.image_urls[$index + 2]" class="d-block w-100" alt="..." v-if="$index === 0">
+                              <img v-bind:src="days.image_urls[$index + 5]" class="d-block w-100" alt="..." v-if="$index === 1">
+                              <img v-bind:src="days.image_urls[$index + 8]" class="d-block w-100" alt="..." v-if="$index === 2">
+                              <img v-bind:src="days.image_urls[$index + 11]" class="d-block w-100" alt="..." v-if="$index === 3">
+                              <img v-bind:src="days.image_urls[$index + 14]" class="d-block w-100" alt="..." v-if="$index === 4">
+                              <img v-bind:src="days.image_urls[$index + 17]" class="d-block w-100" alt="..." v-if="$index === 5">
+                              <img v-bind:src="days.image_urls[$index + 20]" class="d-block w-100" alt="..." v-if="$index === 6">
+                            </div>
+                          </div>
+                          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                          </button>
+                          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                          </button>
+                        </div>
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">
@@ -134,33 +174,33 @@ export default {
   },
   methods: {
     createMealPlan: function() {
-      // console.log("in the index/create meal plan function");
+      console.log("in the index/create meal plan function");
       axios
         .get(`/meal_plans_generate?diet=${this.diet}&calories=${this.calories}&allergies=${this.allergies}`)
         .then(response => {
-          // console.log(response.data);
+          console.log(response.data);
           this.days = response.data;
         })
       axios
         .get('/current_user')
         .then(response => {
-          // console.log(response.data);
+          console.log(response.data);
           this.user = response.data;
         })
     },
     showRecipeInfo: function(theMealPlan) {
-      // console.log("in the recipe info function");
+      console.log("in the recipe info function");
       document.querySelector("#show-modal").showModal();
       this.currentMealPlan = theMealPlan;
       axios
         .get(`/meals_generate?meal1=${this.currentMealPlan.meals[0].id}&meal2=${this.currentMealPlan.meals[1].id}&meal3=${this.currentMealPlan.meals[2].id}`)
         .then(response => {
-          // console.log(response.data);
+          console.log(response.data);
           this.recipeInfo = response.data;
         })
     },
     saveMealPlan: function() {
-      // console.log("in the process of saving the meal plan");
+      console.log("in the process of saving the meal plan");
       axios 
         .post(`/meal_plans`, {
           diet: this.diet,
@@ -169,13 +209,13 @@ export default {
           calories: this.calories
         })
         .then(response => {
-          // console.log(response.data);
+          console.log(response.data);
           this.mealPlan = response.data;
         })
       axios 
         .post('/meals', this.days)
         .then(response => {
-          // console.log(response.data);
+          console.log(response.data);
         })
     }
   }
