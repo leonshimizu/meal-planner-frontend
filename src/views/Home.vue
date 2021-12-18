@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+
     <!-- Header-->
     <header class="bg-dark py-5">
         <div class="container px-4 px-lg-5 my-5">
@@ -30,6 +31,7 @@
             </div>
         </div>
     </header>
+    
     <!-- Section-->
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
@@ -37,7 +39,6 @@
                 <div class="col mb-5" v-for="(value, key, $index) in days" v-if="$index < 7">
                     <div class="card h-100">
                         <!-- Product images -->
-                        <!-- <img class="card-img-top" v-bind:src="days.image_urls[$index]" style="height:300px" /> -->
                         <!-- Carousel -->
                         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                           <div class="carousel-indicators">
@@ -96,21 +97,20 @@
                                 <!-- Product name-->
                                 <h5 class="fw-bolder">{{ key.charAt(0).toUpperCase() + key.slice(1) }}</h5>
                                 <!-- Product price-->
-                                <!-- <p>{{ days.image_urls }}</p> -->
                                 <p>Breakfast: {{ value.meals[0].title }}</p>
                                 <p>Lunch: {{ value.meals[1].title }}</p>
                                 <p>Dinner: {{ value.meals[2].title }}</p>
                                 <button type="button" class="btn btn-primary" v-on:click="showRecipeInfo(value)" v-if="user !== null">Show More Info</button>
                             </div>
                         </div>
-                        <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>      
+    </section>    
+
     <!-- Show Modal -->
     <dialog id="show-modal">
       <form method="dialog">

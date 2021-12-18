@@ -20,6 +20,7 @@
           </div>
       </div>
     </header>
+    
     <!-- Section-->
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
@@ -42,7 +43,6 @@
                                 <button type="button" class="btn btn-primary" v-on:click="extraInfo(meal)">Show More Info</button>
                             </div>
                         </div>
-                        <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                         </div>
                     </div>
@@ -50,6 +50,7 @@
             </div>
         </div>
     </section>  
+
     <!-- Extra Modal -->
     <dialog id="extra-modal">
       <form method="dialog">
