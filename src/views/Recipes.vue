@@ -37,7 +37,7 @@ export default {
     indexFunction: function() {
       console.log("in the index function");
       axios
-        .get(`https://api.spoonacular.com/food/products/search?query=chicken&number=2&addProductInformation=true&apiKey=${}`)
+        .get(`https://api.spoonacular.com/food/products/search?query=chicken&number=2&addProductInformation=true&apiKey=`)
         .then(response => {
           console.log(response.data);
           this.recipes = response.data;
