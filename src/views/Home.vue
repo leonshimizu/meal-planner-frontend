@@ -80,7 +80,7 @@
                         <b>Prep Time:</b> {{ recipe.preparationMinutes }} minutes, <b>Cook Time:</b> {{ recipe.cookingMinutes }} minutes
                       </p>
                       <p class="card-text">
-                        <b>Servings:</b> {{ recipe.servings }}, <b>Price Per Serving:</b> <!-- ${{ recipe.pricePerServing }} price is wrong-->
+                        <b>Servings:</b> {{ recipe.servings }}, <!-- <b>Price Per Serving:</b> ${{ recipe.pricePerServing }} price is wrong-->
                       </p>
                       <p class="card-text"><strong>Instructions:</strong> {{ recipe.instructions }}</p>
                       <p class="card-text">
