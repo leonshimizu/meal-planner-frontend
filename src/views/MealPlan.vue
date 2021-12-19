@@ -6,7 +6,7 @@
           <div class="text-center text-white">
               <h1 class="display-4 fw-bolder">{{ user.name }}'s Meal Plan:</h1>
               <p class="lead fw-normal text-white-50 mb-0">Diet: {{ meal_plan[0].diet }}</p>
-              <p class="lead fw-normal text-white-50 mb-0">Allergies: {{ meal_plan[0].allergies }}</p>
+              <p class="lead fw-normal text-white-50 mb-0" v-if="meal_plan[0].allergies !== ''">Allergies: {{ meal_plan[0].allergies }}</p>
               <p class="lead fw-normal text-white-50 mb-0">Time Frame: {{ meal_plan[0].timeFrame }}</p>
               <p class="lead fw-normal text-white-50 mb-0">Calories: {{ meal_plan[0].calories }}</p>
               <p class="lead fw-normal text-white-50 mb-0">Created: {{ meal_plan[0].created_at }}</p>
@@ -35,8 +35,8 @@
                                 <h5 class="fw-bolder">{{ mealData[$index].day_of_week.charAt(0).toUpperCase() + mealData[$index].day_of_week.slice(1) }} - {{ mealData[$index].meal_type.charAt(0).toUpperCase() + mealData[$index].meal_type.slice(1) }}</h5>
                                 <h5 class="fw-bolder">{{ meal.title }}</h5>
                                 <!-- Product Info-->
-                                <p>Prep Time: {{ meal.preparationMinutes }} minutes</p>
-                                <p>Cook Time: {{ meal.cookingMinutes }} minutes</p>
+                                <p v-if="meal.preparationMinutes !== 0 && meal.preparationMinutes !== ''">Prep Time: {{ meal.preparationMinutes }} minutes</p> <!-- still need to figure out how to make it not display if there's no info -->
+                                <p v-if="meal.cookingMinutes !== 0">Cook Time: {{ meal.cookingMinutes }} minutes</p>
                                 <p>Servings: {{ meal.servings }}</p>
                                 <!-- <p>Price Per Serving: ${{ meal.pricePerServing }}</p> Price is wrong -->
                                 <button type="button" class="btn btn-primary" v-on:click="extraInfo(meal)">Show More Info</button>
@@ -68,7 +68,7 @@
               <b>Prep Time:</b> {{ info.preparationMinutes }} minutes, <b>Cook Time:</b> {{ info.cookingMinutes }} minutes
             </p>
             <p class="card-text">
-              <b>Servings:</b> {{ info.servings }}, <b>Price Per Serving:</b> ${{ info.pricePerServing }}
+              <b>Servings:</b> {{ info.servings }}<!--, <b>Price Per Serving:</b> ${{ info.pricePerServing }} -->
             </p>
             <p class="card-text"><strong>Instructions:</strong> {{ info.instructions }}</p>
             <p class="card-text">
