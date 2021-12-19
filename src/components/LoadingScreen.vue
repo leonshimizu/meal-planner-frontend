@@ -2,7 +2,7 @@
   <div id="loading">
     <img
       class="img"
-      src="../assets/Spinner-5.gif"
+      src="../assets/loader-2_food.gif"
       alt="loading..."
     />
   </div>
