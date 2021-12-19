@@ -48,14 +48,18 @@
                           </div>
                           <div class="carousel-inner">
                             <div class="carousel-item active"> 
-                              <!-- <img v-bind:src="days.image_urls[$index]" class="d-block w-100" v-if="$index < 1">
-                              <img v-bind:src="days.image_urls[$index + 1]" class="d-block w-100" v-if="$index < 1">
-                              <img v-bind:src="days.image_urls[$index + 2]" class="d-block w-100" v-if="$index < 1">
+                              <img v-bind:src="days.image_urls[$index]" class="d-block w-100" v-if="$index < 1">
                               <img v-bind:src="days.image_urls[$index + 3]" class="d-block w-100" v-if="$index >= 1">
+                            </div>
+                            <div class="carousel-item active">
+                              <img v-bind:src="days.image_urls[$index + 1]" class="d-block w-100" v-if="$index < 1">
                               <img v-bind:src="days.image_urls[$index + 4]" class="d-block w-100" v-if="$index >= 1">
-                              <img v-bind:src="days.image_urls[$index + 5]" class="d-block w-100" v-if="$index >= 1"> -->
+                            </div>
+                            <div class="carousel-item active">
+                              <img v-bind:src="days.image_urls[$index + 2]" class="d-block w-100" v-if="$index < 1">
+                              <img v-bind:src="days.image_urls[$index + 5]" class="d-block w-100" v-if="$index >= 1">
                               <!-- Make loop that adds 3 every iteration of the loop to make it as dry as possible -->
-                              <img v-bind:src="days.image_urls[$index]" class="d-block w-100" alt="..." v-if="$index === 0">
+                              <!-- <img v-bind:src="days.image_urls[$index]" class="d-block w-100" alt="..." v-if="$index === 0">
                               <img v-bind:src="days.image_urls[$index + 3]" class="d-block w-100" alt="..." v-if="$index === 1">
                               <img v-bind:src="days.image_urls[$index + 6]" class="d-block w-100" alt="..." v-if="$index === 2">
                               <img v-bind:src="days.image_urls[$index + 9]" class="d-block w-100" alt="..." v-if="$index === 3">
@@ -79,7 +83,7 @@
                               <img v-bind:src="days.image_urls[$index + 11]" class="d-block w-100" alt="..." v-if="$index === 3">
                               <img v-bind:src="days.image_urls[$index + 14]" class="d-block w-100" alt="..." v-if="$index === 4">
                               <img v-bind:src="days.image_urls[$index + 17]" class="d-block w-100" alt="..." v-if="$index === 5">
-                              <img v-bind:src="days.image_urls[$index + 20]" class="d-block w-100" alt="..." v-if="$index === 6">
+                              <img v-bind:src="days.image_urls[$index + 20]" class="d-block w-100" alt="..." v-if="$index === 6"> -->
                             </div>
                           </div>
                           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
