@@ -37,8 +37,8 @@
                                 <h5 class="fw-bolder">{{ mealData[$index].day_of_week.charAt(0).toUpperCase() + mealData[$index].day_of_week.slice(1) }} - {{ mealData[$index].meal_type.charAt(0).toUpperCase() + mealData[$index].meal_type.slice(1) }}</h5>
                                 <h5 class="fw-bolder">{{ meal.title }}</h5>
                                 <!-- Product Info-->
-                                <p v-if="meal.preparationMinutes !== 0">Prep Time: {{ meal.preparationMinutes }} minutes</p> <!-- Still need to fix this, the one in the modal, and the one on the home page - to not show if there's no data given -->
-                                <p v-if="meal.preparationMinutes !== 0">Cook Time: {{ meal.cookingMinutes }} minutes</p>
+                                <p v-if="meal.preparationMinutes !== 0 && meal.preparationMinutes !== undefined">Prep Time: {{ meal.preparationMinutes }} minutes</p>
+                                <p v-if="meal.cookingMinutes !== 0 && meal.cookingMinutes !== undefined">Cook Time: {{ meal.cookingMinutes }} minutes</p>
                                 <p>Servings: {{ meal.servings }}</p>
                                 <!-- <p>Price Per Serving: ${{ meal.pricePerServing }}</p> -->
                                 <button type="button" class="btn btn-primary" v-on:click="extraInfo(meal)">Show More Info</button>
@@ -66,7 +66,7 @@
                 {{ product.amount.toFixed(2) }} {{ product.unit }} of {{ product.name }}, 
               </span>
             </p>
-            <p class="card-text" v-if="info.preparationMinutes !== null"> <!-- Still need to make it display N/A or not display anything if there isn't a value -->
+            <p class="card-text" v-if="info.preparationMinutes !== 0 && info.preparationMinutes !== undefined">
               <b>Prep Time:</b> {{ info.preparationMinutes }} minutes, <b>Cook Time:</b> {{ info.cookingMinutes }} minutes
             </p>
             <p class="card-text">

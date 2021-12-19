@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-
     <!-- Header-->
     <header class="bg-dark py-5">
         <div class="container px-4 px-lg-5 my-5">
@@ -124,11 +123,11 @@
                         {{ product.amount.toFixed(2) }} {{ product.unit }} of {{ product.name }}, 
                       </span>
                       </p>
-                      <p class="card-text" v-if="recipe.preparationMinutes !== null || recipe.cookingMinutes !== null">
+                      <p class="card-text" v-if="recipe.preparationMinutes !== 0 && recipe.cookingMinutes !== undefined">
                         <b>Prep Time:</b> {{ recipe.preparationMinutes }} minutes, <b>Cook Time:</b> {{ recipe.cookingMinutes }} minutes
                       </p>
                       <p class="card-text">
-                        <b>Servings:</b> {{ recipe.servings }}, <b>Price Per Serving:</b> <!-- ${{ recipe.pricePerServing }} -->
+                        <b>Servings:</b> {{ recipe.servings }}<!--, <b>Price Per Serving:</b> ${{ recipe.pricePerServing }} -->
                       </p>
                       <p class="card-text"><strong>Instructions:</strong> {{ recipe.instructions }}</p>
                       <p class="card-text">
@@ -216,7 +215,7 @@
           .post(`/meal_plans`, {
             diet: this.diet,
             allergies: this.allergies, 
-            timeFrame: "week",
+            timeFrame: "Week",
             calories: this.calories
           })
           .then(response => {
