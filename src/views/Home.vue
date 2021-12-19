@@ -39,7 +39,7 @@
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 <div class="col mb-5" v-for="(value, key, $index) in days" v-if="$index < 7">
                     <div class="card h-100">
-                        <!-- Product images --> <!-- Go through loop to make sure correct images are being loaded -->
+                        <!-- Product images -->
                         <!-- Carousel -->
                         <div v-bind:id="`carouselExampleIndicators${$index}`" class="carousel slide" data-bs-ride="carousel">
                           <div class="carousel-indicators">
@@ -49,16 +49,31 @@
                           </div>
                           <div class="carousel-inner">
                             <div class="carousel-item active"> 
-                              <img v-bind:src="days.image_urls[$index]" class="d-block w-100" v-if="$index < 1">
-                              <img v-bind:src="days.image_urls[$index + 3]" class="d-block w-100" v-if="$index >= 1">
+                              <img v-bind:src="days.image_urls[$index]" class="d-block w-100" v-if="$index === 0">
+                              <img v-bind:src="days.image_urls[$index + 2]" class="d-block w-100" v-if="$index === 1">
+                              <img v-bind:src="days.image_urls[$index + 4]" class="d-block w-100" v-if="$index === 2">
+                              <img v-bind:src="days.image_urls[$index + 6]" class="d-block w-100" v-if="$index === 3">
+                              <img v-bind:src="days.image_urls[$index + 8]" class="d-block w-100" v-if="$index === 4">
+                              <img v-bind:src="days.image_urls[$index + 10]" class="d-block w-100" v-if="$index === 5">
+                              <img v-bind:src="days.image_urls[$index + 12]" class="d-block w-100" v-if="$index === 6">
                             </div>
-                            <div class="carousel-item">
-                              <img v-bind:src="days.image_urls[$index + 1]" class="d-block w-100" v-if="$index < 1">
-                              <img v-bind:src="days.image_urls[$index + 4]" class="d-block w-100" v-if="$index >= 1">
+                            <div class="carousel-item"> 
+                              <img v-bind:src="days.image_urls[$index + 1]" class="d-block w-100" v-if="$index === 0">
+                              <img v-bind:src="days.image_urls[$index + 3]" class="d-block w-100" v-if="$index === 1">
+                              <img v-bind:src="days.image_urls[$index + 5]" class="d-block w-100" v-if="$index === 2">
+                              <img v-bind:src="days.image_urls[$index + 7]" class="d-block w-100" v-if="$index === 3">
+                              <img v-bind:src="days.image_urls[$index + 9]" class="d-block w-100" v-if="$index === 4">
+                              <img v-bind:src="days.image_urls[$index + 11]" class="d-block w-100" v-if="$index === 5">
+                              <img v-bind:src="days.image_urls[$index + 13]" class="d-block w-100" v-if="$index === 6">
                             </div>
-                            <div class="carousel-item">
-                              <img v-bind:src="days.image_urls[$index + 2]" class="d-block w-100" v-if="$index < 1">
-                              <img v-bind:src="days.image_urls[$index + 5]" class="d-block w-100" v-if="$index >= 1">
+                            <div class="carousel-item"> 
+                              <img v-bind:src="days.image_urls[$index + 2]" class="d-block w-100" v-if="$index === 0">
+                              <img v-bind:src="days.image_urls[$index + 4]" class="d-block w-100" v-if="$index === 1">
+                              <img v-bind:src="days.image_urls[$index + 6]" class="d-block w-100" v-if="$index === 2">
+                              <img v-bind:src="days.image_urls[$index + 8]" class="d-block w-100" v-if="$index === 3">
+                              <img v-bind:src="days.image_urls[$index + 10]" class="d-block w-100" v-if="$index === 4">
+                              <img v-bind:src="days.image_urls[$index + 12]" class="d-block w-100" v-if="$index === 5">
+                              <img v-bind:src="days.image_urls[$index + 14]" class="d-block w-100" v-if="$index === 6">
                             </div>
                           </div>
                           <button class="carousel-control-prev" type="button" v-bind:data-bs-target="`#carouselExampleIndicators${$index}`" data-bs-slide="prev">
@@ -76,9 +91,9 @@
                                 <!-- Product name-->
                                 <h5 class="fw-bolder">{{ key.charAt(0).toUpperCase() + key.slice(1) }}</h5>
                                 <!-- Product price-->
-                                <p>Breakfast: {{ value.meals[0].title }}</p>
-                                <p>Lunch: {{ value.meals[1].title }}</p>
-                                <p>Dinner: {{ value.meals[2].title }}</p>
+                                <p><strong>Breakfast:</strong> {{ value.meals[0].title }}</p>
+                                <p><strong>Lunch:</strong> {{ value.meals[1].title }}</p>
+                                <p><strong>Dinner:</strong> {{ value.meals[2].title }}</p>
                                 <button type="button" class="btn btn-primary" v-on:click="showRecipeInfo(value)" v-if="user !== null">Show More Info</button>
                             </div>
                         </div>
@@ -113,7 +128,7 @@
                         <b>Prep Time:</b> {{ recipe.preparationMinutes }} minutes, <b>Cook Time:</b> {{ recipe.cookingMinutes }} minutes
                       </p>
                       <p class="card-text">
-                        <b>Servings:</b> {{ recipe.servings }}, <b>Price Per Serving:</b> ${{ recipe.pricePerServing }}
+                        <b>Servings:</b> {{ recipe.servings }}, <b>Price Per Serving:</b> <!-- ${{ recipe.pricePerServing }} -->
                       </p>
                       <p class="card-text"><strong>Instructions:</strong> {{ recipe.instructions }}</p>
                       <p class="card-text">
@@ -147,9 +162,9 @@
       return {
         welcomeMessage: "Welcome to the Meal Plan Generator!",
         days: [],
-        diet: "Gluten Free",
-        calories: "1200",
-        allergies: "Peanut",
+        diet: "",
+        calories: "",
+        allergies: "",
         currentMealPlan: {},
         recipeInfo: {},
         mealPlan: {},
