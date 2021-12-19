@@ -29,7 +29,7 @@
 
     <!-- Footer-->
     <footer class="py-5 bg-dark">
-        <div class="container"><p class="m-0 text-center text-white">Thank you! :) </p></div>
+        <div class="container"><p class="m-0 text-center text-white">Adios!</p></div>
     </footer>    
   </div>
 </template>
