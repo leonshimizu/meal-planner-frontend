@@ -43,6 +43,7 @@
               "Bearer " + response.data.jwt;
             localStorage.setItem("jwt", response.data.jwt);
             this.$router.push("/");
+            window.location.reload();
           })
           .catch((error) => {
             console.log(error.response);

@@ -22,6 +22,7 @@
     </header>
     
     <!-- Section-->
+    <LoadingScreen v-if="isLoading"></LoadingScreen>
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-3 justify-content-center">
@@ -90,6 +91,7 @@
 <style></style>
 
 <script>
+  import LoadingScreen from "../components/LoadingScreen.vue"
   import axios from 'axios'
   export default {
     data: function () {
@@ -109,8 +111,12 @@
           }
         },
         mealData: {},
-        user: {}
+        user: {},
+        isLoading: false
       };
+    },
+    components: {
+      LoadingScreen
     },
     created: function () {
       this.mealPlanShow();
@@ -133,11 +139,13 @@
           })
       },
       recipeShow: function() { 
+        this.isLoading = true;
         console.log("in the meals show");
         axios 
           .get('/all_meals')
           .then(response => {
             console.log(response.data);
+            this.isLoading = false;
             this.allMeals = response.data;
           })
         axios 

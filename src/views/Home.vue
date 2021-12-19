@@ -33,64 +33,39 @@
     </header>
     
     <!-- Section-->
+    <LoadingScreen v-if="isLoading"></LoadingScreen>
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 <div class="col mb-5" v-for="(value, key, $index) in days" v-if="$index < 7">
                     <div class="card h-100">
-                        <!-- Product images -->
+                        <!-- Product images --> <!-- Go through loop to make sure correct images are being loaded -->
                         <!-- Carousel -->
-                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                        <div v-bind:id="`carouselExampleIndicators${$index}`" class="carousel slide" data-bs-ride="carousel">
                           <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            <button type="button" v-bind:data-bs-target="`#carouselExampleIndicators${$index}`" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" v-bind:data-bs-target="`#carouselExampleIndicators${$index}`" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" v-bind:data-bs-target="`#carouselExampleIndicators${$index}`" data-bs-slide-to="2" aria-label="Slide 3"></button>
                           </div>
                           <div class="carousel-inner">
                             <div class="carousel-item active"> 
                               <img v-bind:src="days.image_urls[$index]" class="d-block w-100" v-if="$index < 1">
                               <img v-bind:src="days.image_urls[$index + 3]" class="d-block w-100" v-if="$index >= 1">
                             </div>
-                            <div class="carousel-item active">
+                            <div class="carousel-item">
                               <img v-bind:src="days.image_urls[$index + 1]" class="d-block w-100" v-if="$index < 1">
                               <img v-bind:src="days.image_urls[$index + 4]" class="d-block w-100" v-if="$index >= 1">
                             </div>
-                            <div class="carousel-item active">
+                            <div class="carousel-item">
                               <img v-bind:src="days.image_urls[$index + 2]" class="d-block w-100" v-if="$index < 1">
                               <img v-bind:src="days.image_urls[$index + 5]" class="d-block w-100" v-if="$index >= 1">
-                              <!-- Make loop that adds 3 every iteration of the loop to make it as dry as possible -->
-                              <!-- <img v-bind:src="days.image_urls[$index]" class="d-block w-100" alt="..." v-if="$index === 0">
-                              <img v-bind:src="days.image_urls[$index + 3]" class="d-block w-100" alt="..." v-if="$index === 1">
-                              <img v-bind:src="days.image_urls[$index + 6]" class="d-block w-100" alt="..." v-if="$index === 2">
-                              <img v-bind:src="days.image_urls[$index + 9]" class="d-block w-100" alt="..." v-if="$index === 3">
-                              <img v-bind:src="days.image_urls[$index + 12]" class="d-block w-100" alt="..." v-if="$index === 4">
-                              <img v-bind:src="days.image_urls[$index + 15]" class="d-block w-100" alt="..." v-if="$index === 5">
-                              <img v-bind:src="days.image_urls[$index + 18]" class="d-block w-100" alt="..." v-if="$index === 6">
-                            </div>
-                            <div class="carousel-item active">
-                              <img v-bind:src="days.image_urls[$index + 1]" class="d-block w-100" alt="..." v-if="$index === 0">
-                              <img v-bind:src="days.image_urls[$index + 4]" class="d-block w-100" alt="..." v-if="$index === 1">
-                              <img v-bind:src="days.image_urls[$index + 7]" class="d-block w-100" alt="..." v-if="$index === 2">
-                              <img v-bind:src="days.image_urls[$index + 10]" class="d-block w-100" alt="..." v-if="$index === 3">
-                              <img v-bind:src="days.image_urls[$index + 13]" class="d-block w-100" alt="..." v-if="$index === 4">
-                              <img v-bind:src="days.image_urls[$index + 16]" class="d-block w-100" alt="..." v-if="$index === 5">
-                              <img v-bind:src="days.image_urls[$index + 19]" class="d-block w-100" alt="..." v-if="$index === 6">
-                            </div>
-                            <div class="carousel-item active">
-                              <img v-bind:src="days.image_urls[$index + 2]" class="d-block w-100" alt="..." v-if="$index === 0">
-                              <img v-bind:src="days.image_urls[$index + 5]" class="d-block w-100" alt="..." v-if="$index === 1">
-                              <img v-bind:src="days.image_urls[$index + 8]" class="d-block w-100" alt="..." v-if="$index === 2">
-                              <img v-bind:src="days.image_urls[$index + 11]" class="d-block w-100" alt="..." v-if="$index === 3">
-                              <img v-bind:src="days.image_urls[$index + 14]" class="d-block w-100" alt="..." v-if="$index === 4">
-                              <img v-bind:src="days.image_urls[$index + 17]" class="d-block w-100" alt="..." v-if="$index === 5">
-                              <img v-bind:src="days.image_urls[$index + 20]" class="d-block w-100" alt="..." v-if="$index === 6"> -->
                             </div>
                           </div>
-                          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                          <button class="carousel-control-prev" type="button" v-bind:data-bs-target="`#carouselExampleIndicators${$index}`" data-bs-slide="prev">
                               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                               <span class="visually-hidden">Previous</span>
                             </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                            <button class="carousel-control-next" type="button" v-bind:data-bs-target="`#carouselExampleIndicators${$index}`" data-bs-slide="next">
                               <span class="carousel-control-next-icon" aria-hidden="true"></span>
                               <span class="visually-hidden">Next</span>
                             </button>
@@ -161,78 +136,84 @@
 </template>
 
 <script>
-import axios from 'axios'
-export default {
-  name: 'Home',
-  components: {},
-  data: function() {
-    return {
-      welcomeMessage: "Welcome to the Meal Plan Generator!",
-      days: [],
-      diet: "Gluten Free",
-      calories: "1200",
-      allergies: "Peanut",
-      currentMealPlan: {},
-      recipeInfo: {},
-      mealPlan: {},
-      user: {}
-    }
-  },
-  created: function() {
-    // this.createMealPlan();
-    axios
-      .get('/current_user')
-      .then(response => {
-        console.log(response.data);
-        this.user = response.data;
-      })    
-  },
-  methods: {
-    createMealPlan: function() {
-      console.log("in the index/create meal plan function");
-      axios
-        .get(`/meal_plans_generate?diet=${this.diet}&calories=${this.calories}&allergies=${this.allergies}`)
-        .then(response => {
-          console.log(response.data);
-          this.days = response.data;
-        })
+  import LoadingScreen from "../components/LoadingScreen.vue"
+  import axios from 'axios'
+  export default {
+    name: 'Home',
+    components: {
+      LoadingScreen
+    },
+    data: function() {
+      return {
+        welcomeMessage: "Welcome to the Meal Plan Generator!",
+        days: [],
+        diet: "Gluten Free",
+        calories: "1200",
+        allergies: "Peanut",
+        currentMealPlan: {},
+        recipeInfo: {},
+        mealPlan: {},
+        user: {},
+        isLoading: false
+      }
+    },
+    created: function() {
+      // this.createMealPlan();
       axios
         .get('/current_user')
         .then(response => {
           console.log(response.data);
           this.user = response.data;
-        })
+        })    
     },
-    showRecipeInfo: function(theMealPlan) {
-      console.log("in the recipe info function");
-      document.querySelector("#show-modal").showModal();
-      this.currentMealPlan = theMealPlan;
-      axios
-        .get(`/meals_generate?meal1=${this.currentMealPlan.meals[0].id}&meal2=${this.currentMealPlan.meals[1].id}&meal3=${this.currentMealPlan.meals[2].id}`)
-        .then(response => {
-          console.log(response.data);
-          this.recipeInfo = response.data;
-        })
-    },
-    saveMealPlan: function() {
-      console.log("in the process of saving the meal plan");
-      axios 
-        .post(`/meal_plans`, {
-          diet: this.diet,
-          allergies: this.allergies, 
-          timeFrame: "week",
-          calories: this.calories
-        })
-        .then(response => {
-          console.log(response.data);
-          this.mealPlan = response.data;
-        })
-      axios 
-        .post('/meals', this.days)
-        .then(response => {
-          console.log(response.data);
-        })
+    methods: {
+      createMealPlan: function() {
+        this.isLoading = true;
+        console.log("in the index/create meal plan function");
+        axios
+          .get(`/meal_plans_generate?diet=${this.diet}&calories=${this.calories}&allergies=${this.allergies}`)
+          .then(response => {
+            console.log(response.data);
+            this.isLoading = false;
+            this.days = response.data;
+          })
+        axios
+          .get('/current_user')
+          .then(response => {
+            console.log(response.data);
+            this.user = response.data;
+          })
+      },
+      showRecipeInfo: function(theMealPlan) {
+        console.log("in the recipe info function");
+        document.querySelector("#show-modal").showModal();
+        this.currentMealPlan = theMealPlan;
+        axios
+          .get(`/meals_generate?meal1=${this.currentMealPlan.meals[0].id}&meal2=${this.currentMealPlan.meals[1].id}&meal3=${this.currentMealPlan.meals[2].id}`)
+          .then(response => {
+            console.log(response.data);
+            this.recipeInfo = response.data;
+          })
+      },
+      saveMealPlan: function() {
+        console.log("in the process of saving the meal plan");
+        axios 
+          .post(`/meal_plans`, {
+            diet: this.diet,
+            allergies: this.allergies, 
+            timeFrame: "week",
+            calories: this.calories
+          })
+          .then(response => {
+            console.log(response.data);
+            this.mealPlan = response.data;
+          })
+        axios 
+          .post('/meals', this.days)
+          .then(response => {
+            console.log(response.data);
+          })
+      }
     }
   }
-}
 </script>
