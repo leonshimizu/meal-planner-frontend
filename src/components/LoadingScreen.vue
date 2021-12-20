@@ -27,6 +27,6 @@
   .img {
     position: relative;
     margin: auto;
-    margin-top: 20%;
+    margin-top: 1%;
   }
 </style>
