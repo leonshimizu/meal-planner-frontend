@@ -125,11 +125,23 @@
                         {{ product.amount.toFixed(2) }} {{ product.unit }} of {{ product.name }}, 
                       </span>
                       </p>
-                      <p class="card-text" v-if="recipe.preparationMinutes !== 0 && recipe.cookingMinutes !== undefined">
+                      <p class="card-text" v-if="recipe.preparationMinutes !== 0 && recipe.cookingMinutes !== undefined && recipe.cookingMinutes <= 60">
                         <b>Prep Time:</b> {{ recipe.preparationMinutes }} minutes, <b>Cook Time:</b> {{ recipe.cookingMinutes }} minutes
                       </p>
-                      <p class="card-text">
+                      <p class="card-text" v-if="recipe.preparationMinutes > 60 ">
+                        <b>Prep Time:</b> {{ (recipe.preparationMinutes / 60).toFixed(2) }} hours, <b>Cook Time:</b> {{ recipe.cookingMinutes }} minutes
+                      </p>
+                      <p class="card-text" v-if="recipe.cookingMinutes > 60 ">
+                        <b>Prep Time:</b> {{ recipe.preparationMinutes }} minutes, <b>Cook Time:</b> {{ (recipe.cookingMinutes / 60).toFixed(2) }} hours
+                      </p>
+                      <p class="card-text" v-if="recipe.preparationMinutes > 60 && recipe.cookingMinutes > 60">
+                        <b>Prep Time:</b> {{ (recipe.preparationMinutes / 60).toFixed(2) }} minutes, <b>Cook Time:</b> {{ (recipe.cookingMinutes / 60).toFixed(2) }} hours
+                      </p>
+                      <p class="card-text" v-if="recipe.servings >= 2">
                         <b>Servings:</b> {{ recipe.servings }}
+                      </p>
+                      <p class="card-text" v-if="recipe.servings < 2">
+                        <b>Serving:</b> {{ recipe.servings }}
                       </p>
                       <p class="card-text"><strong>Instructions:</strong> {{ recipe.instructions }}</p>
                       <p class="card-text">

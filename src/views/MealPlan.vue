@@ -37,9 +37,12 @@
                                 <h5 class="fw-bolder">{{ mealData[$index].day_of_week.charAt(0).toUpperCase() + mealData[$index].day_of_week.slice(1) }} - {{ mealData[$index].meal_type.charAt(0).toUpperCase() + mealData[$index].meal_type.slice(1) }}</h5>
                                 <h5 class="fw-bolder">{{ meal.title }}</h5>
                                 <!-- Product details -->
-                                <p v-if="meal.preparationMinutes !== 0 && meal.preparationMinutes !== undefined">Prep Time: {{ meal.preparationMinutes }} minutes</p>
-                                <p v-if="meal.cookingMinutes !== 0 && meal.cookingMinutes !== undefined">Cook Time: {{ meal.cookingMinutes }} minutes</p>
-                                <p>Servings: {{ meal.servings }}</p>
+                                <p v-if="meal.preparationMinutes !== 0 && meal.preparationMinutes !== undefined && meal.preparationMinutes <= 60">Prep Time: {{ meal.preparationMinutes }} minutes</p>
+                                <p v-if="meal.preparationMinutes > 60">Prep Time: {{ (meal.preparationMinutes / 60).toFixed(2) }} minutes</p>
+                                <p v-if="meal.cookingMinutes !== 0 && meal.cookingMinutes !== undefined && meal.cookingMinutes <= 60">Cook Time: {{ meal.cookingMinutes }} minutes</p>
+                                <p v-if="meal.cookingMinutes > 60">Cook Time: {{ (meal.cookingMinutes / 60).toFixed(2) }} hours</p>
+                                <p v-if="meal.servings >= 2">Servings: {{ meal.servings }}</p>
+                                <p v-if="meal.servings < 2">Serving: {{ meal.servings }}</p>
                                 <button type="button" class="btn btn-primary" v-on:click="extraInfo(meal)">Show More Info</button>
                             </div>
                         </div>
