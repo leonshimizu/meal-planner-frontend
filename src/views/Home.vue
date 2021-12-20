@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <!-- Header-->
+    <!-- Header -->
     <header class="bg-dark py-5">
         <div class="container px-4 px-lg-5 my-5">
             <div class="text-center text-white">
@@ -33,7 +33,7 @@
         </div>
     </header>
     
-    <!-- Section-->
+    <!-- Section -->
     <LoadingScreen v-if="isLoading"></LoadingScreen>
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
@@ -86,12 +86,12 @@
                               <span class="visually-hidden">Next</span>
                             </button>
                         </div>
-                        <!-- Product details-->
+                        <!-- Product -->
                         <div class="card-body p-4">
                             <div class="text-center">
                                 <!-- Product name-->
                                 <h5 class="fw-bolder">{{ key.charAt(0).toUpperCase() + key.slice(1) }}</h5>
-                                <!-- Product price-->
+                                <!-- Product details -->
                                 <p><strong>Breakfast:</strong> {{ value.meals[0].title }}</p>
                                 <p><strong>Lunch:</strong> {{ value.meals[1].title }}</p>
                                 <p><strong>Dinner:</strong> {{ value.meals[2].title }}</p>
@@ -129,7 +129,7 @@
                         <b>Prep Time:</b> {{ recipe.preparationMinutes }} minutes, <b>Cook Time:</b> {{ recipe.cookingMinutes }} minutes
                       </p>
                       <p class="card-text">
-                        <b>Servings:</b> {{ recipe.servings }}<!--, <b>Price Per Serving:</b> ${{ recipe.pricePerServing }} -->
+                        <b>Servings:</b> {{ recipe.servings }}
                       </p>
                       <p class="card-text"><strong>Instructions:</strong> {{ recipe.instructions }}</p>
                       <p class="card-text">

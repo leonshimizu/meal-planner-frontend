@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <!-- Navigation-->
+    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container px-4 px-lg-5">
           <a class="navbar-brand" href="/">Hafa Adai!</a>
@@ -27,11 +27,9 @@
     <!-- Router View -->
     <router-view/>
 
-    <div class="d-grid gap-2">
-        <button class="btn btn-secondary" type="button" v-on:click="scrollToTop()">Top</button>
-    </div>
+    <button id="scrollToTopBtn" v-on:click="scrollToTop()">☝️</button>
 
-    <!-- Footer-->
+    <!-- Footer -->
     <footer class="py-5 bg-dark">
         <div class="container"><p class="m-0 text-center text-white">Adios!</p></div>
     </footer>    
@@ -62,20 +60,15 @@
     }
 </script>
 
-<!-- <li class="nav-item dropdown"> EXTRA DROP DOWN MENU
-    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <li><a class="dropdown-item" href="#!">All Products</a></li>
-        <li><hr class="dropdown-divider" /></li>
-        <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-        <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-    </ul>
-</li> -->
-
-<!-- <form class="d-flex"> EXTRA FORM 
-    <button class="btn btn-outline-dark" type="submit">
-        <i class="bi-cart-fill me-1"></i>
-        Cart
-        <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-    </button>
-</form> -->
+<style>
+    #scrollToTopBtn {
+    background-color: black;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 48px;
+    width: 48px;
+    }
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <!-- Header-->
+  <!-- Header -->
   <div class="mealPlan">
     <header class="bg-dark py-5" v-if="user !== null">
       <div class="container px-4 px-lg-5 my-5">
@@ -9,8 +9,8 @@
               <p class="lead fw-normal text-white-50 mb-0" v-if="meal_plan[0].allergies !== ''">Allergies: {{ meal_plan[0].allergies }}</p>
               <p class="lead fw-normal text-white-50 mb-0">Time Frame: {{ meal_plan[0].timeFrame }}</p>
               <p class="lead fw-normal text-white-50 mb-0">Calories: {{ meal_plan[0].calories }}</p>
-              <p class="lead fw-normal text-white-50 mb-0">Created: {{ meal_plan[0].created_at }}</p>
-          </div>
+              <p class="lead fw-normal text-white-50 mb-0">Created: {{ meal_plan[0].created_at[5] }}{{ meal_plan[0].created_at[6] }}/{{ meal_plan[0].created_at[8] }}{{ meal_plan[0].created_at[9] }}/{{ meal_plan[0].created_at[0] }}{{ meal_plan[0].created_at[1] }}{{ meal_plan[0].created_at[2] }}{{ meal_plan[0].created_at[3] }}</p>
+          </div> 
       </div>
     </header>
     <header class="bg-dark py-5" v-if="user == null">
@@ -21,26 +21,25 @@
       </div>
     </header>
     
-    <!-- Section-->
+    <!-- Section -->
     <LoadingScreen v-if="isLoading"></LoadingScreen>
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-3 justify-content-center">
                 <div class="col mb-5" v-for="meal,$index in allMeals">
                     <div class="card h-100">
-                        <!-- Product image-->
+                        <!-- Product image -->
                         <img v-bind:src="meal.image" class="card-img-top" alt="..." style="max-width: 500px; text-align:center">
-                        <!-- Product details-->
+                        <!-- Product -->
                         <div class="card-body p-3">
                             <div class="text-center">
                                 <!-- Product name -->
                                 <h5 class="fw-bolder">{{ mealData[$index].day_of_week.charAt(0).toUpperCase() + mealData[$index].day_of_week.slice(1) }} - {{ mealData[$index].meal_type.charAt(0).toUpperCase() + mealData[$index].meal_type.slice(1) }}</h5>
                                 <h5 class="fw-bolder">{{ meal.title }}</h5>
-                                <!-- Product Info-->
+                                <!-- Product details -->
                                 <p v-if="meal.preparationMinutes !== 0 && meal.preparationMinutes !== undefined">Prep Time: {{ meal.preparationMinutes }} minutes</p>
                                 <p v-if="meal.cookingMinutes !== 0 && meal.cookingMinutes !== undefined">Cook Time: {{ meal.cookingMinutes }} minutes</p>
                                 <p>Servings: {{ meal.servings }}</p>
-                                <!-- <p>Price Per Serving: ${{ meal.pricePerServing }}</p> -->
                                 <button type="button" class="btn btn-primary" v-on:click="extraInfo(meal)">Show More Info</button>
                             </div>
                         </div>
@@ -70,7 +69,7 @@
               <b>Prep Time:</b> {{ info.preparationMinutes }} minutes, <b>Cook Time:</b> {{ info.cookingMinutes }} minutes
             </p>
             <p class="card-text">
-              <b>Servings:</b> {{ info.servings }}<!-- , <b>Price Per Serving:</b> ${{ info.pricePerServing }} -->
+              <b>Servings:</b> {{ info.servings }}
             </p>
             <p class="card-text"><strong>Instructions:</strong> {{ info.instructions }}</p>
             <p class="card-text">
