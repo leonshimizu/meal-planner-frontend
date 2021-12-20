@@ -28,7 +28,7 @@
                   <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" v-model="allergies">
                 </div>
                 <div class="input-group input-group-sm mb-3">
-                  <span class="input-group-text" id="inputGroup-sizing-sm">Recipes Shown - <small>(Default: 1)</small></span>
+                  <span class="input-group-text" id="inputGroup-sizing-sm">How Many<small>(Default: 1)</small></span>
                   <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" v-model="number"> 
                 </div>
                 <button type="button" class="btn btn-success" v-on:click="generateRecipes()">Generate Recipes</button>
