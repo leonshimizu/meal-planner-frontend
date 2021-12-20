@@ -26,6 +26,8 @@
                 <br>
                 <br>
                 <button type="button" class="btn btn-success" v-on:click="saveMealPlan()" v-if="user !== null">Save Meal Plan</button>
+                <br v-if="saved === true">
+                <p class="fw-normal text-white-50 mb-0" v-if="saved === true">Meal Plan Saved!</p>
                 <p class="fw-normal text-white-50 mb-0" v-if="user === null">To save this meal plan, please create an account and signin. Thank you!</p>
             </div>
         </div>
@@ -168,7 +170,8 @@
         recipeInfo: {},
         mealPlan: {},
         user: {},
-        isLoading: false
+        isLoading: false,
+        saved: false
       }
     },
     created: function() {
@@ -226,6 +229,7 @@
           .post('/meals', this.days)
           .then(response => {
             console.log(response.data);
+            this.saved = true;
           })
       }
     }

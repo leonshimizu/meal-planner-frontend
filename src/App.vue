@@ -27,6 +27,10 @@
     <!-- Router View -->
     <router-view/>
 
+    <div class="d-grid gap-2">
+        <button class="btn btn-secondary" type="button" v-on:click="scrollToTop()">Top</button>
+    </div>
+
     <!-- Footer-->
     <footer class="py-5 bg-dark">
         <div class="container"><p class="m-0 text-center text-white">Adios!</p></div>
@@ -49,7 +53,12 @@
                     console.log(response.data);
                     this.user = response.data;
                 })
-        }
+        },
+        methods: {
+            scrollToTop: function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        } 
     }
 </script>
 
