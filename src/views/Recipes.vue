@@ -28,8 +28,8 @@
                   <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" v-model="allergies">
                 </div>
                 <div class="input-group input-group-sm mb-3">
-                  <span class="input-group-text" id="inputGroup-sizing-sm">Number of Recipes Shown</span>
-                  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" v-model="number"> <!-- write that it defaults to 1 -->
+                  <span class="input-group-text" id="inputGroup-sizing-sm">Recipes Shown - <small>(Default: 1)</small></span>
+                  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" v-model="number"> 
                 </div>
                 <button type="button" class="btn btn-success" v-on:click="generateRecipes()">Generate Recipes</button>
                 <br>
@@ -43,25 +43,23 @@
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-3 justify-content-center">
-                <div class="col mb-5" v-for="recipe,$index in recipes">
+                <div class="col mb-5" v-for="meal,$index in recipes">
                     <div class="card h-100">
                         <!-- Product image -->
-                        <!-- <img v-bind:src="meal.image" class="card-img-top" alt="..." style="max-width: 500px; text-align:center"> -->
+                        <img v-bind:src="meal.image" class="card-img-top" alt="..." style="max-width: 500px; text-align:center">
                         <!-- Product -->
                         <div class="card-body p-3">
                             <div class="text-center">
-                              {{ recipe }}
                               <!-- Product name -->
-                              <!-- <h5 class="fw-bolder">{{ mealData[$index].day_of_week.charAt(0).toUpperCase() + mealData[$index].day_of_week.slice(1) }} - {{ mealData[$index].meal_type.charAt(0).toUpperCase() + mealData[$index].meal_type.slice(1) }}</h5> -->
-                              <!-- <h5 class="fw-bolder">{{ meal.title }}</h5> -->
+                              <h5 class="fw-bolder">{{ meal.title }}</h5>
                               <!-- Product details -->
-                              <!-- <p v-if="meal.preparationMinutes !== 0 && meal.preparationMinutes !== undefined && meal.preparationMinutes <= 60">Prep Time: {{ meal.preparationMinutes }} minutes</p>
+                              <p v-if="meal.preparationMinutes !== 0 && meal.preparationMinutes !== undefined && meal.preparationMinutes <= 60">Prep Time: {{ meal.preparationMinutes }} minutes</p>
                               <p v-if="meal.preparationMinutes > 60">Prep Time: {{ (meal.preparationMinutes / 60).toFixed(2) }} minutes</p>
                               <p v-if="meal.cookingMinutes !== 0 && meal.cookingMinutes !== undefined && meal.cookingMinutes <= 60">Cook Time: {{ meal.cookingMinutes }} minutes</p>
                               <p v-if="meal.cookingMinutes > 60">Cook Time: {{ (meal.cookingMinutes / 60).toFixed(2) }} hours</p>
                               <p v-if="meal.servings >= 2">Servings: {{ meal.servings }}</p>
                               <p v-if="meal.servings < 2">Serving: {{ meal.servings }}</p>
-                              <button type="button" class="btn btn-primary" v-on:click="extraInfo(meal)">Show More Info</button> -->
+                              <button type="button" class="btn btn-primary" v-on:click="extraInfo(meal)">Show More Info</button>
                             </div>
                         </div>
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
@@ -70,63 +68,93 @@
                 </div>
             </div>
         </div>
-    </section>  
+    </section>
+
+    <!-- Extra Modal -->
+    <dialog id="extra-modal">
+      <form method="dialog">
+        <div class="card text-center">
+          <div class="card-header">
+            <strong>{{ info.title }}</strong>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              <b>Ingredients: </b>
+              <span v-for="product in info.extendedIngredients">
+                {{ product.amount.toFixed(2) }} {{ product.unit }} of {{ product.name }}, 
+              </span>
+            </p>
+            <p class="card-text" v-if="info.preparationMinutes !== 0 && info.preparationMinutes !== undefined">
+              <b>Prep Time:</b> {{ info.preparationMinutes }} minutes, <b>Cook Time:</b> {{ info.cookingMinutes }} minutes
+            </p>
+            <p class="card-text">
+              <b>Servings:</b> {{ info.servings }}
+            </p>
+            <p class="card-text"><strong>Instructions:</strong> {{ info.instructions }}</p>
+            <p class="card-text">
+              <b>Nutritional Facts: </b>
+              <span v-for="nutrition,$index in info.nutrition.nutrients" v-if="$index !== 2 && $index !== 4 && $index < 10">
+                {{ nutrition.title }}: {{ nutrition.amount }}{{ nutrition.unit }}, 
+              </span>
+            </p>
+          </div>
+        </div>  
+        <br>
+        <button class="btn btn-warning">Close</button>
+      </form>
+    </dialog>
   </div>
 </template>
 
 <script>
-import LoadingScreen from "../components/LoadingScreen.vue"
-import axios from 'axios'
-export default {
-  name: 'Home',
-  components: {
-    LoadingScreen
-  },
-  data: function() {
-    return {
-      message: "Hello World",
-      recipes: {},
-      query: "",
-      cuisine: "",
-      diet: "",
-      allergies: "",
-      number: "1",
-      isLoading: false
-    }
-  },
-  created: function() {},
-  methods: {
-    generateRecipes: function() {
-      console.log("in the index function");
-      this.isLoading = true;
-      axios
-        .get(`/recipes_generate?query=${this.query}&cuisine=${this.cuisine}&diet=${this.diet}&intolerances=${this.allergies}&number=${this.number}`)
-        .then(response => {
-          console.log(response.data.results);
-          this.recipes = response.data.results;
-          this.isLoading = false;
-        })
+  import LoadingScreen from "../components/LoadingScreen.vue"
+  import axios from 'axios'
+  export default {
+    name: 'Home',
+    components: {
+      LoadingScreen
     },
-    showInfo: function() {
-      console.log("in the show info function");
+    data: function() {
+      return {
+        recipes: {},
+        query: "",
+        cuisine: "",
+        diet: "",
+        allergies: "",
+        number: "1",
+        isLoading: false,
+        currentRecipe: {},
+        info: {
+          nutrition: {
+            nutrients: []
+          }
+        }
+      }
+    },
+    created: function() {},
+    methods: {
+      generateRecipes: function() {
+        console.log("in the index function");
+        this.isLoading = true;
+        axios
+          .get(`/recipes_generate?query=${this.query}&cuisine=${this.cuisine}&diet=${this.diet}&intolerances=${this.allergies}&number=${this.number}`)
+          .then(response => {
+            console.log(response.data.results);
+            this.recipes = response.data.results;
+            this.isLoading = false;
+          })
+      },
+      extraInfo: function(theRecipe) {
+        console.log("in the extra info function");
+        document.querySelector("#extra-modal").showModal();
+        this.currentRecipe = theRecipe;
+        axios 
+          .get(`/extra_info?meal_id=${this.currentRecipe.id}`)
+          .then(response => {
+            console.log(response.data);
+            this.info = response.data[0];
+          })
+      }
     }
   }
-}
 </script>
-
-    <!-- <h1>Welcome to the Recipe Generator!</h1>
-    <h3>Here are some example recipes, if you choose to, here are some filters you can use:</h3>
-    <p>Diets: Gluten Free, Ketogenic, Vegetarian, Lacto-Vegetarian, Ovo-Vegetarian, Vegan, Pescetarian, Paleo, Primal, low FODMAP, and Whole30 (for more infomation, visit <a href="https://spoonacular.com/food-api/docs#Diets">Diets)</a></p>
-    <p>Cuisines: African, American, British, Cajun, Caribbean, chinese, Eastern European, European, French, German, Greek, Indian, Irish, Italian, Japanese, Jewish, Korean, Latin American, Mediterranean, Mexican, Middle Eastern, Nordic, Southern, Spanish, Thai, and Vietnamese</p>
-    <p>Allergies/Intolerances: Dairy, Egg, Gluten, Grain, Peanut, Seafood, Sesame, Shellfish, Soy, Sulfite, Tree Nut, and Wheat</p>
-    <p>Meal Tyes: Main Course, Side dish, Dessert, Appetizer, Salad, Bread, Breakfast, Soup, Beverage, Sauce, Marinade, Fingerfood, Snack, and Drink</p>
-    <p>For more sorting options, visit <a href="https://spoonacular.com/food-api/docs#Recipe-Sorting-Options">Sorting Options</a></p>
-    <hr>
-    <ol>
-      <li v-for="recipe in recipes.products">
-        {{ recipe.title }}
-        {{ recipe.price }}
-        <button v-on:click="showInfo()">Show More Info</button>
-      </li>
-    </ol> -->
-    <!-- {{ recipes.products }} -->

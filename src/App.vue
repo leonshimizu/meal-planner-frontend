@@ -8,7 +8,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="/meal_plans">Personal Meal Plan Page</a></li>
-                <!-- <li class="nav-item"><a class="nav-link active" aria-current="page" href="/recipes">Recipes</a></li> -->
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="/recipes">Recipes</a></li>
                 <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
             </ul>
             <span class="nav-item dropdown">
