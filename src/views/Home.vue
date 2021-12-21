@@ -28,7 +28,7 @@
                 <button type="button" class="btn btn-success" v-on:click="saveMealPlan()" v-if="user !== null">Save Meal Plan</button>
                 <br v-if="saved === true">
                 <p class="fw-normal text-white-50 mb-0" v-if="saved === true">Meal Plan Saved!</p>
-                <p class="fw-normal text-white-50 mb-0" v-if="user === null">To save this meal plan, please create an account and signin. Thank you!</p>
+                <p class="fw-normal text-white-50 mb-0" v-if="user === null">To save this meal plan, please <a href="/signup">create an account</a> and/or <a href="/login">login</a>. Thank you!</p>
             </div>
         </div>
     </header>
