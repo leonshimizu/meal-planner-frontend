@@ -260,6 +260,7 @@
           .then(response => {
             console.log(response.data);
             this.saved = true;
+            this.$router.push("/meal_plans");
           })
       },
       scrollToTop: function() {
