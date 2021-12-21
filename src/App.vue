@@ -67,7 +67,7 @@
     border-radius: 50%;
     color: white;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 25px;
     line-height: 48px;
     width: 48px;
     }
