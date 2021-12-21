@@ -222,6 +222,7 @@
             this.isLoading = false;
             this.clicked = true;
             this.days = response.data;
+            this.scrollDown();
           })
         axios
           .get('/current_user')
@@ -263,6 +264,9 @@
       },
       scrollToTop: function() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
+      },
+      scrollDown: function() {
+        window.scrollTo(0, 3000);
       }
     }
   }

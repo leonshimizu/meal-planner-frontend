@@ -160,6 +160,7 @@
             this.recipes = response.data.results;
             this.isLoading = false;
             this.clicked = true;
+            this.scrollDown();
           })
       },
       extraInfo: function(theRecipe) {
@@ -175,6 +176,9 @@
       },
       scrollToTop: function() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
+      },
+      scrollDown: function() {
+        window.scrollTo(0, 600);
       }
     }
   }

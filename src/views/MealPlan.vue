@@ -162,6 +162,7 @@
             console.log(response.data);
             this.isLoading = false;
             this.allMeals = response.data;
+            this.scrollDown();
           })
         axios 
           .get('/meals')
@@ -183,6 +184,9 @@
       },
       scrollToTop: function() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
+      },
+      scrollDown: function() {
+        window.scrollTo(0, 600);
       }
     },
   };
