@@ -70,6 +70,9 @@
         </div>
     </section>
 
+    <button id="scrollToTopBtn" v-on:click="scrollToTop()" v-if="clicked == true">☝️</button>
+
+
     <!-- Extra Modal -->
     <dialog id="extra-modal">
       <form method="dialog">
@@ -106,6 +109,19 @@
   </div>
 </template>
 
+<style>
+  #scrollToTopBtn {
+    background-color: black;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    font-size: 25px;
+    line-height: 48px;
+    width: 48px;
+  }
+</style>
+
 <script>
   import LoadingScreen from "../components/LoadingScreen.vue"
   import axios from 'axios'
@@ -128,7 +144,8 @@
           nutrition: {
             nutrients: []
           }
-        }
+        },
+        clicked: false
       }
     },
     created: function() {},
@@ -142,6 +159,7 @@
             console.log(response.data.results);
             this.recipes = response.data.results;
             this.isLoading = false;
+            this.clicked = true;
           })
       },
       extraInfo: function(theRecipe) {
@@ -154,6 +172,9 @@
             console.log(response.data);
             this.info = response.data[0];
           })
+      },
+      scrollToTop: function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }
   }

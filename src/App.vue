@@ -27,8 +27,6 @@
     <!-- Router View -->
     <router-view/>
 
-    <!-- <button id="scrollToTopBtn" v-on:click="scrollToTop()">☝️</button> -->
-
     <!-- Footer -->
     <footer class="py-5 bg-dark">
         <div class="container"><p class="m-0 text-center text-white">Adios!</p></div>
@@ -51,24 +49,6 @@
                     console.log(response.data);
                     this.user = response.data;
                 })
-        },
-        methods: {
-            scrollToTop: function() {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        } 
+        }
     }
 </script>
-
-<style>
-    #scrollToTopBtn {
-    background-color: black;
-    border: none;
-    border-radius: 50%;
-    color: white;
-    cursor: pointer;
-    font-size: 25px;
-    line-height: 48px;
-    width: 48px;
-    }
-</style>

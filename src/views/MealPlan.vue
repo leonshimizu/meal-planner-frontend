@@ -54,6 +54,8 @@
         </div>
     </section>  
 
+    <button id="scrollToTopBtn" v-on:click="scrollToTop()">☝️</button>
+
     <!-- Extra Modal -->
     <dialog id="extra-modal">
       <form method="dialog">
@@ -90,7 +92,18 @@
   </div>
 </template>
 
-<style></style>
+<style>
+  #scrollToTopBtn {
+    background-color: black;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    font-size: 25px;
+    line-height: 48px;
+    width: 48px;
+  }
+</style>
 
 <script>
   import LoadingScreen from "../components/LoadingScreen.vue"
@@ -167,6 +180,9 @@
             console.log(response.data);
             this.info = response.data[0];
           })
+      },
+      scrollToTop: function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     },
   };
