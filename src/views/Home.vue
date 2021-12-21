@@ -95,7 +95,7 @@
                                 <p><strong>Breakfast:</strong> {{ value.meals[0].title }}</p>
                                 <p><strong>Lunch:</strong> {{ value.meals[1].title }}</p>
                                 <p><strong>Dinner:</strong> {{ value.meals[2].title }}</p>
-                                <button type="button" class="btn btn-primary" v-on:click="showRecipeInfo(value)" v-if="user !== null">Show More Info</button>
+                                <button type="button" class="btn btn-primary" v-on:click="showRecipeInfo(value)">Show More Info</button>
                             </div>
                         </div>
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
