@@ -127,7 +127,7 @@
         },
         mealData: {},
         user: {},
-        isLoading: false
+        isLoading: false,     
       };
     },
     components: {
@@ -191,3 +191,24 @@
     },
   };
 </script>
+
+<!-- Code to download CSV - doesn't work properly yet
+<download-csv
+  class   = "btn btn-default"
+  :data   = "json_data"
+  name    = "meal-plan.csv">
+
+  Download CSV (This is a slot)
+
+</download-csv>   
+import Vue from 'vue'
+import JsonCSV from 'vue-json-csv'  
+
+Vue.component('downloadCsv', JsonCSV)  
+
+json_data: [
+      {
+        diet: `${this.diet}`
+      }
+    ]     
+-->
