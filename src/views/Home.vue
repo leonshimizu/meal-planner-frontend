@@ -39,7 +39,7 @@
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 <div class="col mb-5" v-for="(value, key, $index) in days" v-if="$index < 7">
-                    <div class="card h-100">
+                    <div class="card h-100 border-dark mb-3">
                         <!-- Product images -->
                         <!-- Carousel -->
                         <div v-bind:id="`carouselExampleIndicators${$index}`" class="carousel slide" data-bs-ride="carousel">
@@ -95,7 +95,7 @@
                                 <p><strong>Breakfast:</strong> {{ value.meals[0].title }}</p>
                                 <p><strong>Lunch:</strong> {{ value.meals[1].title }}</p>
                                 <p><strong>Dinner:</strong> {{ value.meals[2].title }}</p>
-                                <button type="button" class="btn btn-primary" v-on:click="showRecipeInfo(value)">Show More Info</button>
+                                <button type="button" class="btn btn-dark" v-on:click="showRecipeInfo(value)">More Info</button>
                             </div>
                         </div>
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">

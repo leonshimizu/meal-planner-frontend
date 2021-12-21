@@ -27,7 +27,7 @@
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-3 justify-content-center">
                 <div class="col mb-5" v-for="meal,$index in allMeals">
-                    <div class="card h-100">
+                    <div class="card h-100 border-dark mb-3">
                         <!-- Product image -->
                         <img v-bind:src="meal.image" class="card-img-top" alt="..." style="max-width: 500px; text-align:center">
                         <!-- Product -->
@@ -43,7 +43,7 @@
                                 <p v-if="meal.cookingMinutes > 60">Cook Time: {{ (meal.cookingMinutes / 60).toFixed(2) }} hours</p>
                                 <p v-if="meal.servings >= 2">Servings: {{ meal.servings }}</p>
                                 <p v-if="meal.servings < 2">Serving: {{ meal.servings }}</p>
-                                <button type="button" class="btn btn-primary" v-on:click="extraInfo(meal)">Show More Info</button>
+                                <button type="button" class="btn btn-dark" v-on:click="extraInfo(meal)">More Info</button>
                             </div>
                         </div>
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
