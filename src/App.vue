@@ -27,7 +27,7 @@
     <!-- Router View -->
     <router-view/>
 
-    <button id="scrollToTopBtn" v-on:click="scrollToTop()">☝️</button>
+    <!-- <button id="scrollToTopBtn" v-on:click="scrollToTop()">☝️</button> -->
 
     <!-- Footer -->
     <footer class="py-5 bg-dark">
