@@ -5,11 +5,11 @@
         <div class="container px-4 px-lg-5 my-5">
             <div class="text-center text-white">
                 <h1 class="display-4 fw-bolder">Welcome to the Recipe Generator!</h1>
-                <p class="lead fw-normal text-white-50 mb-0">Here are some example recipes, if you choose to, here are some filters you can use:</p>
+                <!-- <p class="lead fw-normal text-white-50 mb-0"></p> -->
                 <p class="fw-normal text-white-50 mb-0">Diets: Gluten Free, Ketogenic, Vegetarian, Lacto-Vegetarian, Ovo-Vegetarian, Vegan, Pescetarian, Paleo, Primal, low FODMAP, or Whole30 (for more infomation, visit <a href="https://spoonacular.com/food-api/docs#Diets">Diets)</a></p>
                 <p class="fw-normal text-white-50 mb-0">Cuisines: African, American, British, Cajun, Caribbean, chinese, Eastern European, European, French, German, Greek, Indian, Irish, Italian, Japanese, Jewish, Korean, Latin American, Mediterranean, Mexican, Middle Eastern, Nordic, Southern, Spanish, Thai, and Vietnamese</p>
                 <p class="fw-normal text-white-50 mb-0">Allergies/Intolerances: Dairy, Egg, Gluten, Grain, Peanut, Seafood, Sesame, Shellfish, Soy, Sulfite, Tree Nut, and Wheat</p>
-                <p class="fw-normal text-white-50 mb-0">Please, input your filters of choice:</p>
+                <p class="fw-normal text-white-50 mb-0">Please, input your selection in at least one of the next 3 boxes, the last 2 are optional:</p>
                 <br>
                 <div class="input-group input-group-sm mb-3">
                   <span class="input-group-text" id="inputGroup-sizing-sm">Query</span>
@@ -24,7 +24,7 @@
                   <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" v-model="diet">
                 </div>
                 <div class="input-group input-group-sm mb-3">
-                  <span class="input-group-text" id="inputGroup-sizing-sm">Allergies</span>
+                  <span class="input-group-text" id="inputGroup-sizing-sm">Allergies (Optional)</span>
                   <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" v-model="allergies">
                 </div>
                 <div class="input-group input-group-sm mb-3">
