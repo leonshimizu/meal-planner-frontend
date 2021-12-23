@@ -32,6 +32,15 @@
             </div>
         </div>
     </header>
+
+    <!-- <download-csv - doesn't work properly yet 
+      class   = "btn btn-default"
+      :data   = "Object.entries(days)"
+      name    = "meal-plan.csv">
+
+      Download
+
+    </download-csv>    -->
     
     <!-- Section -->
     <LoadingScreen v-if="isLoading"></LoadingScreen>
@@ -181,6 +190,10 @@
 <script>
   import LoadingScreen from "../components/LoadingScreen.vue"
   import axios from 'axios'
+  import Vue from 'vue'
+  import JsonCSV from 'vue-json-csv'  
+
+  Vue.component('downloadCsv', JsonCSV) 
   export default {
     name: 'Home',
     components: {
@@ -199,7 +212,7 @@
         user: {},
         isLoading: false,
         saved: false,
-        clicked: false
+        clicked: false,
       }
     },
     created: function() {
@@ -223,6 +236,7 @@
             this.clicked = true;
             this.days = response.data;
             this.scrollDown();
+            // this.convertDaysToArray();
           })
         axios
           .get('/current_user')
@@ -268,7 +282,13 @@
       },
       scrollDown: function() {
         window.scrollTo(0, 3000);
-      }
+      },
+      // convertDaysToArray: function() {
+      //   // try getting meal data and changing that data into and pushing it into an array and then using that array as the data that the user will download
+      //   Object.entries(days).forEach(function(meal) {
+      //     console.log(meal);
+      //   })
+      // }
     }
   }
 </script>
