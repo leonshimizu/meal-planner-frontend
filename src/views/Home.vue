@@ -55,7 +55,7 @@
             {{ days }}
         </section>
     </vue-html2pdf>
-    <button v-on:click="generateReport()">Download</button>
+    <!-- <button v-on:click="generateReport()">Download</button> -->
     
     <!-- Section -->
     <LoadingScreen v-if="isLoading"></LoadingScreen>
