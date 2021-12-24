@@ -33,14 +33,29 @@
         </div>
     </header>
 
-    <!-- <download-csv - doesn't work properly yet 
-      class   = "btn btn-default"
-      :data   = "Object.entries(days)"
-      name    = "meal-plan.csv">
+    <vue-html2pdf
+        :show-layout="false"
+        :float-layout="true"
+        :enable-download="true"
+        :preview-modal="true"
+        :paginate-elements-by-height="1400"
+        filename="test-download"
+        :pdf-quality="2"
+        :manual-pagination="false"
+        pdf-format="a4"
+        pdf-orientation="landscape"
+        pdf-content-width="800px"
 
-      Download
-
-    </download-csv>    -->
+        @progress="onProgress($event)"
+        @hasStartedGeneration="hasStartedGeneration()"
+        @hasGenerated="hasGenerated($event)"
+        ref="html2Pdf"
+    >
+        <section slot="pdf-content">
+            {{ days }}
+        </section>
+    </vue-html2pdf>
+    <button v-on:click="generateReport()">Download</button>
     
     <!-- Section -->
     <LoadingScreen v-if="isLoading"></LoadingScreen>
@@ -190,14 +205,12 @@
 <script>
   import LoadingScreen from "../components/LoadingScreen.vue"
   import axios from 'axios'
-  import Vue from 'vue'
-  import JsonCSV from 'vue-json-csv'  
-
-  Vue.component('downloadCsv', JsonCSV) 
+  import VueHtml2pdf from 'vue-html2pdf'
   export default {
     name: 'Home',
     components: {
-      LoadingScreen
+      LoadingScreen,
+      VueHtml2pdf
     },
     data: function() {
       return {
@@ -283,12 +296,9 @@
       scrollDown: function() {
         window.scrollTo(0, 3000);
       },
-      // convertDaysToArray: function() {
-      //   // try getting meal data and changing that data into and pushing it into an array and then using that array as the data that the user will download
-      //   Object.entries(days).forEach(function(meal) {
-      //     console.log(meal);
-      //   })
-      // }
+      generateReport () {
+        this.$refs.html2Pdf.generatePdf()
+      }
     }
   }
 </script>
