@@ -6,7 +6,7 @@ import axios from 'axios'
 Vue.config.productionTip = false
 
 axios.defaults.baseURL =
-  process.env.NODE_ENV === "development" ? "http://localhost:3000" : "http://meal-planner-gu-api.herokuapp.com";
+  process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://meal-planner-gu-api.herokuapp.com";
 
 var jwt = localStorage.getItem("jwt");
 if (jwt) {
